@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio OS — Bharat Bhushan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="style-classic">
+  <!-- Menu Bar -->
+  <div class="menu-bar">
+    <div class="menu-bar-left">
+      <div class="menu-item" style="font-weight: bold;"> Bharat  OS</div>
+      <div class="menu-item">File</div>
+      <div class="menu-item">Edit</div>
+      <div class="menu-item">View</div>
+      <div class="menu-item">Window</div>
+      <div class="menu-item">Help</div>
+    </div>
+    <div class="menu-bar-right">
+      <div class="menu-item" id="battery" title="Battery Status">🔋 100%</div>
+      <div class="menu-item" title="Network Status">📶</div>
+      <div class="menu-item" id="clock" title="Current Time">12:00 PM</div>
+      <div class="theme-toggle" id="theme-toggle" title="Toggle Light/Dark Mode">
+        <div class="theme-toggle-slider">
+          <span id="theme-icon">☀️</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop -->
+  <div class="desktop" id="desktop">
+    <!-- Desktop Icons -->
+    <div class="desktop-icons">
+      <div class="desktop-icon" data-app="about" role="button" tabindex="0" aria-label="Open About Me">
+        <div class="desktop-icon-img">👤</div>
+        <div class="desktop-icon-label">About Me</div>
+      </div>
+      <div class="desktop-icon" data-app="projects" role="button" tabindex="0" aria-label="Open Projects">
+        <div class="desktop-icon-img">💼</div>
+        <div class="desktop-icon-label">Projects</div>
+      </div>
+      <div class="desktop-icon" data-app="experience" role="button" tabindex="0" aria-label="Open Experience">
+        <div class="desktop-icon-img">🧑‍💻</div>
+        <div class="desktop-icon-label">Experience</div>
+      </div>
+      <div class="desktop-icon" data-app="terminal" role="button" tabindex="0" aria-label="Open Terminal">
+        <div class="desktop-icon-img">⌨️</div>
+        <div class="desktop-icon-label">Terminal</div>
+      </div>
+      <div class="desktop-icon" data-app="settings" role="button" tabindex="0" aria-label="Open Settings">
+        <div class="desktop-icon-img">⚙️</div>
+        <div class="desktop-icon-label">Settings</div>
+      </div>
+    </div>
+
+    <!-- About Window -->
+<div class="window" id="about-window" style="left: 100px; top: 50px; width: 520px; height: 520px; display: none;">
+    <div class="window-titlebar">
+      <div class="window-controls">
+        <div class="window-control close"></div>
+        <div class="window-control minimize"></div>
+        <div class="window-control maximize"></div>
+      </div>
+      <div class="window-title">About Me</div>
+    </div>
+    <div class="window-content">
+      <h1>Bharat Bhushan</h1>
+      <p style="margin-top: 10px; color: var(--text-secondary);">
+        Computer Science undergraduate passionate about Software Development, AI, and Cybersecurity. Focused on building practical, impactful systems—from full‑stack web apps to computer vision tools—while continuously improving problem‑solving and systems thinking.
+      </p>
+  
+      <h2 style="margin-top: 20px;">Education</h2>
+      <p style="margin-top: 8px;">
+        Dayananda Sagar Academy of Technology and Management (DSATM), Karnataka, India<br>
+        B.Tech in Computer Science — 2023 – Ongoing
+      </p>
+  
+      <h2 style="margin-top: 20px;">Skills</h2>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
+        <span class="chip">C++</span>
+        <span class="chip">Java</span>
+        <span class="chip">Python</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">SQL</span>
+        <span class="chip">HTML5</span>
+        <span class="chip">CSS3</span>
+        <span class="chip">React.js</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">Django</span>
+        <span class="chip">MySQL</span>
+        <span class="chip">MongoDB</span>
+        <span class="chip">Firebase</span>
+        <span class="chip">Git</span>
+        <span class="chip">Postman</span>
+        <span class="chip">Linux</span>
+        <span class="chip">DSA</span>
+        <span class="chip">OOP</span>
+        <span class="chip">DBMS</span>
+        <span class="chip">OS</span>
+        <span class="chip">Computer Networks</span>
+        <span class="chip">OpenCV</span>
+        <span class="chip">Tkinter</span>
+        <span class="chip">NumPy</span>
+        <span class="chip">Matplotlib</span>
+        <span class="chip">PIL</span>
+        <style>
+          .chip { background: var(--accent-color); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 13px; }
+        </style>
+      </div>
+  
+      <h2 style="margin-top: 20px;">Contact</h2>
+      <p style="margin-top: 8px;">
+        📧 <a href="mailto:bharat.workspace974@gmail.com">bharat.workspace974@gmail.com</a>
+      </p>
+      <p>
+        🔗 <a href="https://github.com/Strangemortal" target="_blank" rel="noopener noreferrer">github.com/Strangemortal</a>
+      </p>
+      <p>
+        🔗 <a href="https://www.linkedin.com/in/bharat-bhushan-2183b5218" target="_blank" rel="noopener noreferrer">linkedin.com/in/bharat-bhushan-2183b5218</a>
+      </p>
+      <p>
+        📱 <a href="tel:+919739449382">+91 97394 49382</a>
+      </p>
+    </div>
+  </div>
+  
+  <!-- Projects Window -->
+  <div class="window" id="projects-window" style="left: 300px; top: 100px; width: 700px; height: 520px; display: none;">
+    <div class="window-titlebar">
+      <div class="window-controls">
+        <div class="window-control close"></div>
+        <div class="window-control minimize"></div>
+        <div class="window-control maximize"></div>
+      </div>
+      <div class="window-title">Projects</div>
+    </div>
+    <div class="window-content">
+      <h1>Featured Projects</h1>
+      <div style="display: grid; gap: 16px; margin-top: 16px;">
+        <div style="padding: 15px; background: rgba(0,0,0,0.05); border-radius: 8px;">
+          <h3>TaskAssign — Role-Based Task Management System</h3>
+          <p style="margin-top: 8px; color: var(--text-secondary);">
+            Web application for role‑based assignment and workflow tracking with dashboards, status flows (Pending, In Progress, Completed), feedback, and admin controls.
+          </p>
+          <div style="margin-top: 8px;">
+            <span style="font-size: 12px; color: var(--accent-color);">Django -  Bootstrap 5 -  SQLite -  JavaScript</span>
+          </div>
+          <div style="margin-top: 6px; font-size: 12px; color: var(--text-secondary);">
+            GitHub: <a href="https://github.com/Strangemortal/TaskAssign" target="_blank" rel="noopener noreferrer">Strangemortal/TaskAssign</a>
+          </div>
+        </div>
+  
+        <div style="padding: 15px; background: rgba(0,0,0,0.05); border-radius: 8px;">
+          <h3>Image Processing Project Suite</h3>
+          <p style="margin-top: 8px; color: var(--text-secondary);">
+            GUI‑based computer vision toolkit featuring Inpainting, Edge Detection (Sobel, Canny), Boundary Extraction, and Color Inpainting.
+          </p>
+          <div style="margin-top: 8px;">
+            <span style="font-size: 12px; color: var(--accent-color);">Python -  OpenCV -  Tkinter -  NumPy -  Matplotlib -  PIL</span>
+          </div>
+          <div style="margin-top: 6px; font-size: 12px; color: var(--text-secondary);">
+            GitHub: <a href="https://github.com/Strangemortal/image-processing-projects" target="_blank" rel="noopener noreferrer">Strangemortal/image-processing-projects</a>
+          </div>
+        </div>
+  
+        <div style="padding: 15px; background: rgba(0,0,0,0.05); border-radius: 8px;">
+          <h3>Intone Chant — Real‑Time Spiritual Chant Tracker (Ongoing)</h3>
+          <p style="margin-top: 8px; color: var(--text-secondary);">
+            Real‑time audio analysis web app that records, filters noise, compares chants to reference frequencies, and tracks session history with exportable reports.
+          </p>
+          <div style="margin-top: 8px;">
+            <span style="font-size: 12px; color: var(--accent-color);">JavaScript -  Web Audio API -  React -  HTML/CSS</span>
+          </div>
+          <!-- If repo exists, uncomment and set the link:
+          <div style="margin-top: 6px; font-size: 12px; color: var(--text-secondary);">
+            GitHub: <a href="https://github.com/Strangemortal/intone-chant" target="_blank" rel="noopener noreferrer">Strangemortal/intone-chant</a>
+          </div>
+          -->
+        </div>
+      </div>
+  
+      <h2 style="margin-top: 20px;">Publications</h2>
+      <div style="padding: 12px; background: rgba(0,0,0,0.04); border-radius: 8px;">
+        <strong>TaskAssign: A Role‑Based Task Management System Using Django</strong><br>
+        International Journal of Computer Applications (IJCA), ISSN: 2250-1797, Impact Factor: 3.12, Volume 3, Issue 15, June 2025
+        <!-- If a publication URL exists, wrap the title in an anchor -->
+        <!-- <strong><a href="PUBLICATION_URL" target="_blank" rel="noopener noreferrer">TaskAssign: A Role‑Based Task Management System Using Django</a></strong> -->
+      </div>
+    </div>
+  </div>
+  
+  <!-- Experience Window -->
+  <div class="window" id="experience-window" style="left: 180px; top: 120px; width: 650px; height: 420px; display: none;">
+    <div class="window-titlebar">
+      <div class="window-controls">
+        <div class="window-control close"></div>
+        <div class="window-control minimize"></div>
+        <div class="window-control maximize"></div>
+      </div>
+      <div class="window-title">Experience</div>
+    </div>
+    <div class="window-content">
+      <h1>Experience</h1>
+      <div style="display: grid; gap: 14px; margin-top: 12px;">
+        <div style="padding: 12px; background: rgba(0,0,0,0.05); border-radius: 8px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h3 style="margin:0;">Maker Space — DSATM College</h3>
+            <span style="font-size:12px; color:var(--text-secondary);">Nov 2024 – Present · Bangalore, India</span>
+          </div>
+          <div style="margin-top: 6px; font-weight: 500;">Member</div>
+          <ul style="margin-top: 8px; padding-left: 18px;">
+            <li>Collaborated on hardware/software projects including IoT‑based solutions and educational kits.</li>
+            <li>Mentored juniors on Arduino, Raspberry Pi, and hands‑on prototyping.</li>
+            <li>Presented projects at tech exhibitions and hackathons across colleges.</li>
+          </ul>
+        </div>
+      </div>
+  
+      <h2 style="margin-top: 16px;">Extra‑Curricular</h2>
+      <ul style="margin-top: 8px; padding-left: 18px;">
+        <li>Innovation Club: Active member of DSATM Maker Space—contributed to ideation, prototyping, and mentoring.</li>
+        <li>Hackathons: Participated in national‑level hackathons focusing on full‑stack, AI, and cybersecurity tools.</li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Terminal Window -->
+  <div class="window" id="terminal-window" style="left: 200px; top: 150px; width: 700px; height: 400px; display: none;">
+    <div class="window-titlebar">
+      <div class="window-controls">
+        <div class="window-control close"></div>
+        <div class="window-control minimize"></div>
+        <div class="window-control maximize"></div>
+      </div>
+      <div class="window-title">Terminal</div>
+    </div>
+    <div class="window-content" style="padding: 0;">
+      <div class="terminal">
+        <div>Portfolio OS v1.0.0</div>
+        <div>Copyright (c) 2025. All rights reserved.</div>
+        <br>
+        <div class="terminal-prompt">
+          <span>bharat@portfolio-os ~ %</span>
+          <span>whoami</span>
+        </div>
+        <div>CS Undergrad | Full‑Stack Developer | AI &amp; Cybersecurity Enthusiast</div>
+        <br>
+        <div class="terminal-prompt">
+          <span>bharat@portfolio-os ~ %</span>
+          <span>ls -la projects/</span>
+        </div>
+        <div>drwxr-xr-x  12 bharat staff   384 Jan 15 10:30 .</div>
+        <div>drwxr-xr-x  24 bharat staff   768 Jan 15 09:45 ..</div>
+        <div>-rw-r--r--   1 bharat staff  4096 Jan 14 14:20 taskassign/</div>
+        <div>-rw-r--r--   1 bharat staff  4096 Jan 13 16:30 image-processing-suite/</div>
+        <div>-rw-r--r--   1 bharat staff  3072 Jan 12 11:15 intone-chant/</div>
+        <br>
+        <div class="terminal-prompt">
+          <span>bharat@portfolio-os ~ %</span>
+          <span class="terminal-cursor">_</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Settings Window -->
+  <div class="window" id="settings-window" style="left: 250px; top: 80px; width: 500px; height: 500px; display: none;">
+    <div class="window-titlebar">
+      <div class="window-controls">
+        <div class="window-control close"></div>
+        <div class="window-control minimize"></div>
+        <div class="window-control maximize"></div>
+      </div>
+      <div class="window-title">Settings</div>
+    </div>
+    <div class="window-content">
+      <div class="settings-panel">
+        <div class="setting-group">
+          <div class="setting-label">Appearance Mode</div>
+          <div style="display: flex; gap: 10px;">
+            <button class="mode-btn" data-mode="light" style="padding: 8px 16px; border-radius: 4px; border: 1px solid #ccc; background: white; cursor: pointer; display: flex; align-items: center; gap: 5px;">
+              <span>☀️</span> Light
+            </button>
+            <button class="mode-btn" data-mode="dark" style="padding: 8px 16px; border-radius: 4px; border: 1px solid #ccc; background: white; cursor: pointer; display: flex; align-items: center; gap: 5px;">
+              <span>🌙</span> Dark
+            </button>
+          </div>
+        </div>
+  
+        <div class="setting-group">
+          <div class="setting-label">Desktop Theme</div>
+          <div class="color-picker">
+            <div class="color-option" style="background: linear-gradient(135deg, #70e1f5 0%, #ffd194 100%);" data-theme="aurora"></div>
+            <div class="color-option" style="background: linear-gradient(135deg, #f77062 0%, #fe5196 100%);" data-theme="flamingo"></div>
+            <div class="color-option" style="background: linear-gradient(135deg, #17ead9 0%, #6078ea 100%);" data-theme="skywave"></div>
+            <div class="color-option" style="background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);" data-theme="meadow"></div>
+            <div class="color-option" style="background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);" data-theme="sunsetglow"></div>
+            <div class="color-option" style="background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);" data-theme="deepocean"></div>
+          </div>
+        </div>
+  
+        <div class="setting-group">
+          <div class="setting-label">Window Style</div>
+          <select id="window-style-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; background: white; cursor: pointer; width: 100%; font-size: 14px;">
+            <option value="classic">Classic Mac</option>
+            <option value="flat">Modern Flat</option>
+            <option value="neumorphic">Neumorphic</option>
+            <option value="glassmorphic">Glassmorphic</option>
+          </select>
+        </div>
+  
+        <div class="setting-group">
+          <div class="setting-label">Animation Speed</div>
+          <input type="range" id="animation-speed" min="0" max="500" value="200" style="width: 100%;">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; margin-top: 5px;">
+            <span>Instant</span>
+            <span id="speed-value">200ms</span>
+            <span>Slow</span>
+          </div>
+        </div>
+  
+        <div class="setting-group">
+          <div class="setting-label">Dock Position</div>
+          <div style="display: flex; gap: 10px;">
+            <button class="dock-position-btn" data-position="bottom" style="padding: 8px 16px; border-radius: 4px; border: 1px solid #ccc; background: white; cursor: pointer;">Bottom</button>
+            <button class="dock-position-btn" data-position="left" style="padding: 8px 16px; border-radius: 4px; border: 1px solid #ccc; background: white; cursor: pointer;">Left</button>
+            <button class="dock-position-btn" data-position="right" style="padding: 8px 16px; border-radius: 4px; border: 1px solid #ccc; background: white; cursor: pointer;">Right</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- Dock -->
+  <div class="dock bottom" id="dock">
+    <div class="dock-item" data-app="about" role="button" aria-label="Open About">👤</div>
+    <div class="dock-item" data-app="projects" role="button" aria-label="Open Projects">💼</div>
+    <div class="dock-item" data-app="experience" role="button" aria-label="Open Experience">🧑‍💻</div>
+    <div class="dock-item" data-app="terminal" role="button" aria-label="Open Terminal">⌨️</div>
+    <div class="dock-item" data-app="settings" role="button" aria-label="Open Settings">⚙️</div>
+    <div class="dock-item" data-app="music">🎵</div>
+    <div class="dock-item" data-app="mail">✉️</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
