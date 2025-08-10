@@ -1,4 +1,4 @@
-# Bharat Bhushan — Interactive Portfolio (Desktop-Style Web OS)
+Interactive Portfolio (Desktop-Style Web OS)
 
 An interactive, desktop-inspired portfolio that feels like a mini operating system: draggable windows, a customizable dock, theming (light/dark + gradients), multiple window styles (classic/flat/neumorphic/glassmorphic), keyboard shortcuts, and performance‑minded UX. Built to showcase software engineering projects in a playful, high‑polish UI.
 
