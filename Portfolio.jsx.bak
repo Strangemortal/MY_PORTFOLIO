@@ -1,0 +1,214 @@
+export default function PortfolioWebsite() {
+  return (
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      {/* HERO SECTION */}
+      <section className="relative h-screen flex items-center justify-center bg-gradient-to-b from-black via-gray-950 to-black">
+        <div className="absolute inset-0 opacity-30">
+          <iframe
+            className="w-full h-full"
+            src="https://my.spline.design/particlesphere-9f7b7d4a6b4e8d5c0c7a5d4f6a7f8b9c/"
+            frameBorder="0"
+            title="3D Background"
+          />
+        </div>
+
+        <div className="relative z-10 text-center px-6">
+          <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-6 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+            Bharat Bhushan
+          </h1>
+
+          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Software Developer • AI/ML Enthusiast • Full Stack Engineer • Cloud & DevOps Explorer
+          </p>
+
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <a
+              href="https://github.com/Strangemortal"
+              target="_blank"
+              className="px-6 py-3 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md hover:scale-105 transition-all duration-300"
+            >
+              GitHub
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/bbhushank/"
+              target="_blank"
+              className="px-6 py-3 rounded-2xl bg-cyan-500 hover:bg-cyan-400 text-black font-semibold transition-all duration-300"
+            >
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT SECTION */}
+      <section className="py-24 px-6 md:px-16 lg:px-28 bg-gradient-to-b from-black to-gray-950">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 className="text-5xl font-bold mb-8 text-cyan-400">About Me</h2>
+            <p className="text-gray-300 text-lg leading-8">
+              I am a Computer Science Engineering student passionate about building scalable systems, AI-driven applications, and modern web experiences. My work spans Full Stack Development, Cloud Computing, DevOps, Cybersecurity, and Machine Learning.
+            </p>
+
+            <p className="text-gray-400 mt-6 text-lg leading-8">
+              I enjoy developing production-ready applications, participating in hackathons, and researching innovative automation and distributed systems.
+            </p>
+          </div>
+
+          <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl shadow-2xl">
+            <div className="grid grid-cols-2 gap-6">
+              {[
+                'Python',
+                'React.js',
+                'Django',
+                'Three.js',
+                'Docker',
+                'AWS',
+                'Machine Learning',
+                'DevOps'
+              ].map((skill) => (
+                <div
+                  key={skill}
+                  className="bg-black/40 border border-cyan-500/20 rounded-2xl p-4 text-center hover:scale-105 transition-all duration-300"
+                >
+                  {skill}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROJECTS */}
+      <section className="py-24 px-6 md:px-16 lg:px-28 bg-black">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-5xl font-bold mb-16 text-center text-purple-400">
+            Featured Projects
+          </h2>
+
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-10">
+            {[
+              {
+                title: 'TaskAssign',
+                desc: 'Role-based workflow management platform with authentication, dashboards, approvals, and DevOps integration.',
+                tech: 'Django • SQLite • Docker • CI/CD'
+              },
+              {
+                title: 'Disease Spread Simulation',
+                desc: 'Graph-based epidemiological simulator using small-world network theory and data visualization.',
+                tech: 'Python • NetworkX • Pandas'
+              },
+              {
+                title: 'AutoFlow',
+                desc: 'Secure Android automation framework focused on permission-aware workflow execution.',
+                tech: 'Android • Security • Automation'
+              },
+              {
+                title: 'Image Processing Suite',
+                desc: 'Desktop applications for edge detection, inpainting, image restoration, and color correction.',
+                tech: 'Python • OpenCV'
+              },
+              {
+                title: 'Disaster Mesh Network',
+                desc: 'Offline secure communication system designed for disaster response and emergency connectivity.',
+                tech: 'Networking • Security • Distributed Systems'
+              },
+              {
+                title: 'AI Recommendation Engine',
+                desc: 'Hybrid recommendation architecture using collaborative filtering and content-based systems.',
+                tech: 'Machine Learning • Recommendation Systems'
+              }
+            ].map((project) => (
+              <div
+                key={project.title}
+                className="group relative bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl hover:-translate-y-3 transition-all duration-500 hover:border-cyan-400/40"
+              >
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-500/0 via-purple-500/0 to-cyan-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all duration-500"></div>
+
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-bold mb-4 text-white">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-gray-400 leading-7 mb-6">
+                    {project.desc}
+                  </p>
+
+                  <div className="text-cyan-400 text-sm font-medium">
+                    {project.tech}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EXPERIENCE SECTION */}
+      <section className="py-24 px-6 md:px-16 lg:px-28 bg-gradient-to-b from-black to-gray-950">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-5xl font-bold mb-16 text-cyan-400">
+            Experience & Achievements
+          </h2>
+
+          <div className="space-y-8">
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-lg">
+              <h3 className="text-2xl font-bold text-white mb-2">
+                Maker Space Member — DSATM
+              </h3>
+              <p className="text-gray-400 leading-8">
+                Worked on embedded systems, AI-integrated applications, hardware-software prototypes, and innovation-driven engineering projects.
+              </p>
+            </div>
+
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-lg">
+              <h3 className="text-2xl font-bold text-white mb-2">
+                Cipher Quest Winner
+              </h3>
+              <p className="text-gray-400 leading-8">
+                Won cybersecurity competition focused on technical problem-solving, logic building, and security concepts.
+              </p>
+            </div>
+
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-lg">
+              <h3 className="text-2xl font-bold text-white mb-2">
+                Research Publications
+              </h3>
+              <p className="text-gray-400 leading-8">
+                Published TaskAssign research paper and secured IEEE ECMI 2026 acceptance for AutoFlow automation framework.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT SECTION */}
+      <section className="py-28 px-6 bg-black text-center">
+        <h2 className="text-5xl font-bold mb-8 text-purple-400">
+          Let's Build Something Amazing
+        </h2>
+
+        <p className="text-gray-400 text-xl max-w-3xl mx-auto leading-8 mb-12">
+          Open to collaborations, internships, hackathons, research opportunities, and innovative software engineering projects.
+        </p>
+
+        <div className="flex flex-wrap justify-center gap-6">
+          <a
+            href="mailto:bharat.workspace974@gmail.com"
+            className="px-8 py-4 rounded-2xl bg-cyan-500 text-black font-bold hover:scale-105 transition-all duration-300"
+          >
+            Contact Me
+          </a>
+
+          <a
+            href="https://github.com/Strangemortal"
+            target="_blank"
+            className="px-8 py-4 rounded-2xl border border-white/20 hover:bg-white/10 transition-all duration-300"
+          >
+            View Projects
+          </a>
+        </div>
+      </section>
+    </div>
+  )
+}
