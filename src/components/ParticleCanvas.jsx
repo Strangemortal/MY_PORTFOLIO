@@ -13,7 +13,7 @@ export default function ParticleCanvas() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Particle settings for light mode
+    // Responsive particle count
     const particleCount = Math.min(Math.floor((width * height) / 16000), 75);
     const particles = [];
     const connectionDistance = 135;
@@ -32,20 +32,20 @@ export default function ParticleCanvas() {
         this.y = Math.random() * height;
         this.baseX = this.x;
         this.baseY = this.y;
-        this.vx = (Math.random() - 0.5) * 0.65;
-        this.vy = (Math.random() - 0.5) * 0.65;
+        this.vx = (Math.random() - 0.5) * 0.55;
+        this.vy = (Math.random() - 0.5) * 0.55;
         this.radius = Math.random() * 2.2 + 1.2;
         
-        // Bright, vibrant, elegant light-theme palette (no dark neon)
+        // Exact theme color palette: Sky Blue, Powder Blue, Air Force Blue, Cadet Blue, Steel Blue
         const colors = [
-          'rgba(99, 102, 241, ',  // Modern Indigo
-          'rgba(14, 165, 233, ',  // Sky Blue
-          'rgba(139, 92, 246, ',  // Violet
-          'rgba(244, 63, 94, ',   // Coral Rose
-          'rgba(16, 185, 129, '   // Emerald
+          'rgba(123, 189, 232, ',  // Sky Blue (#7BBDE8)
+          'rgba(189, 216, 233, ',  // Powder Blue (#BDD8E9)
+          'rgba(110, 162, 179, ',  // Air Force Blue (#6EA2B3)
+          'rgba(78, 142, 162, ',   // Cadet Blue (#4E8EA2)
+          'rgba(73, 118, 159, '    // Steel Blue (#49769F)
         ];
         this.colorPrefix = colors[Math.floor(Math.random() * colors.length)];
-        this.alpha = Math.random() * 0.45 + 0.35;
+        this.alpha = Math.random() * 0.5 + 0.35;
       }
 
       update() {
@@ -76,8 +76,8 @@ export default function ParticleCanvas() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fillStyle = `${this.colorPrefix}${this.alpha})`;
-        ctx.shadowBlur = 4;
-        ctx.shadowColor = `${this.colorPrefix}0.3)`;
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = `${this.colorPrefix}0.4)`;
         ctx.fill();
         ctx.shadowBlur = 0;
       }
@@ -97,11 +97,11 @@ export default function ParticleCanvas() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < connectionDistance) {
-            const alpha = (1 - dist / connectionDistance) * 0.16;
+            const alpha = (1 - dist / connectionDistance) * 0.18;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`;
+            ctx.strokeStyle = `rgba(110, 162, 179, ${alpha})`;
             ctx.lineWidth = 0.85;
             ctx.stroke();
           }
@@ -171,7 +171,7 @@ export default function ParticleCanvas() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-[1] opacity-70"
+      className="fixed inset-0 pointer-events-none z-[1] opacity-75"
     />
   );
 }

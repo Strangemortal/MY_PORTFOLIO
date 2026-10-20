@@ -65,15 +65,15 @@ export default function MouseFollower() {
 
   return (
     <>
-      {/* 1. Large Ambient Radiant Glow tracking the mouse (Bright, luminous, non-neon) */}
+      {/* 1. Large Ambient Radiant Glow tracking the mouse */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[1] w-[450px] h-[450px] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
           x: auraX,
           y: auraY,
           background: isHovered
-            ? 'radial-gradient(circle, rgba(99, 102, 241, 0.16) 0%, rgba(56, 189, 248, 0.08) 40%, transparent 70%)'
-            : 'radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.05) 45%, transparent 70%)',
+            ? 'radial-gradient(circle, rgba(10, 65, 116, 0.4) 0%, rgba(123, 189, 232, 0.15) 40%, transparent 70%)'
+            : 'radial-gradient(circle, rgba(10, 65, 116, 0.25) 0%, rgba(78, 142, 162, 0.08) 45%, transparent 70%)',
         }}
       />
 
@@ -85,13 +85,14 @@ export default function MouseFollower() {
           y: smoothY,
           width: isHovered ? (hoverType === 'card' ? 56 : 48) : 26,
           height: isHovered ? (hoverType === 'card' ? 56 : 48) : 26,
-          borderColor: isHovered ? 'rgba(79, 70, 229, 0.6)' : 'rgba(99, 102, 241, 0.35)',
-          backgroundColor: isHovered ? 'rgba(99, 102, 241, 0.08)' : 'transparent',
+          borderColor: isHovered ? 'rgba(123, 189, 232, 0.7)' : 'rgba(78, 142, 162, 0.4)',
+          backgroundColor: isHovered ? 'rgba(10, 65, 116, 0.3)' : 'transparent',
+          boxShadow: isHovered ? '0 0 15px rgba(123, 189, 232, 0.25)' : 'none',
         }}
         transition={{ type: 'spring', stiffness: 350, damping: 25 }}
       >
         {isHovered && hoverType === 'card' && (
-          <span className="text-[8px] font-mono font-bold tracking-widest text-indigo-600 uppercase select-none">
+          <span className="text-[8px] font-mono font-bold tracking-widest text-[#7BBDE8] uppercase select-none">
             VIEW
           </span>
         )}
@@ -99,7 +100,7 @@ export default function MouseFollower() {
 
       {/* 3. Center Precision Pointer Dot */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-50 w-2 h-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-600 shadow-sm"
+        className="fixed top-0 left-0 pointer-events-none z-50 w-2 h-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#7BBDE8] shadow-[0_0_8px_#7BBDE8]"
         style={{
           x: mouseX,
           y: mouseY,

@@ -18,7 +18,8 @@ import {
   Zap,
   CheckCircle2,
   FolderGit2,
-  Compass
+  Compass,
+  Palette
 } from 'lucide-react';
 
 import Navbar from './components/Navbar';
@@ -43,6 +44,16 @@ const LinkedinIcon = ({ className = 'w-5 h-5' }) => (
   </svg>
 );
 
+const paletteShowcase = [
+  { hex: '#001D39', name: 'Midnight Navy', role: 'Foundation Canvas & Deep Surfaces' },
+  { hex: '#0A4174', name: 'Deep Sapphire Blue', role: 'Elevated Glass Panels & Accents' },
+  { hex: '#49769F', name: 'Steel Blue', role: 'Crisp Structural Borders & Dividers' },
+  { hex: '#4E8EA2', name: 'Cadet Blue', role: 'Teal Undertone & Status Indicators' },
+  { hex: '#6EA2B3', name: 'Air Force Blue', role: 'Secondary Accents & Muted Labels' },
+  { hex: '#7BBDE8', name: 'Sky Blue', role: 'Primary Focus, CTAs & Glowing Links' },
+  { hex: '#BDD8E9', name: 'Powder Blue', role: 'High-Legibility Reading Typography' },
+];
+
 const projects = [
   {
     title: 'TaskAssign',
@@ -50,9 +61,9 @@ const projects = [
     desc: 'A role-free, user-focused task assignment system designed to streamline task tracking between admins and users with real-time state synchronization.',
     tech: ['Python', 'Django', 'Bootstrap', 'REST API'],
     link: 'https://github.com/Strangemortal/TaskAssign',
-    icon: <Terminal className="w-5 h-5 text-indigo-600" />,
-    iconBg: 'bg-indigo-50 border-indigo-100',
-    spotlight: 'rgba(99, 102, 241, 0.12)'
+    icon: <Terminal className="w-5 h-5 text-[#7BBDE8]" />,
+    iconBg: 'bg-[#0A4174]/40 border-[#4E8EA2]/40',
+    spotlight: 'rgba(123, 189, 232, 0.16)'
   },
   {
     title: 'Stegano-Share',
@@ -60,9 +71,9 @@ const projects = [
     desc: 'High-security covert messaging system utilizing steganography to conceal encrypted payloads within images. Features symmetric keys for E2EE.',
     tech: ['Python', 'Django', 'Steganography', 'Cryptography'],
     link: 'https://github.com/Strangemortal/Stegano-Share',
-    icon: <Shield className="w-5 h-5 text-rose-600" />,
-    iconBg: 'bg-rose-50 border-rose-100',
-    spotlight: 'rgba(244, 63, 94, 0.12)'
+    icon: <Shield className="w-5 h-5 text-[#BDD8E9]" />,
+    iconBg: 'bg-[#0A4174]/40 border-[#4E8EA2]/40',
+    spotlight: 'rgba(189, 216, 233, 0.16)'
   },
   {
     title: 'Disease Dynamics ML',
@@ -70,9 +81,9 @@ const projects = [
     desc: 'Graph-based machine learning pipeline to visualize and analyze the epidemiological propagation of disease spread using network topology theory.',
     tech: ['Python', 'ML', 'NetworkX', 'Data Viz'],
     link: 'https://github.com/Strangemortal/Graph-based-Disease-Dynamics-ML',
-    icon: <Activity className="w-5 h-5 text-violet-600" />,
-    iconBg: 'bg-violet-50 border-violet-100',
-    spotlight: 'rgba(139, 92, 246, 0.12)'
+    icon: <Activity className="w-5 h-5 text-[#6EA2B3]" />,
+    iconBg: 'bg-[#0A4174]/40 border-[#4E8EA2]/40',
+    spotlight: 'rgba(110, 162, 179, 0.16)'
   },
   {
     title: 'Task Manager DevOps',
@@ -80,9 +91,9 @@ const projects = [
     desc: 'Production-ready task infrastructure incorporating automated CI/CD pipelines, containerization with Docker, and shell automation scripts.',
     tech: ['Python', 'Shell', 'DevOps', 'Docker'],
     link: 'https://github.com/Strangemortal/task-manager-devops',
-    icon: <Layers className="w-5 h-5 text-sky-600" />,
-    iconBg: 'bg-sky-50 border-sky-100',
-    spotlight: 'rgba(14, 165, 233, 0.12)'
+    icon: <Layers className="w-5 h-5 text-[#7BBDE8]" />,
+    iconBg: 'bg-[#0A4174]/40 border-[#4E8EA2]/40',
+    spotlight: 'rgba(123, 189, 232, 0.16)'
   },
   {
     title: 'SOCIALMEET',
@@ -90,9 +101,9 @@ const projects = [
     desc: 'A unified networking platform engineered to connect creators and professionals across digital social ecosystems with responsive modern UI.',
     tech: ['HTML5', 'CSS3', 'JavaScript', 'UI/UX'],
     link: 'https://github.com/Strangemortal/SOCIALMEET',
-    icon: <Globe className="w-5 h-5 text-emerald-600" />,
-    iconBg: 'bg-emerald-50 border-emerald-100',
-    spotlight: 'rgba(16, 185, 129, 0.12)'
+    icon: <Globe className="w-5 h-5 text-[#4E8EA2]" />,
+    iconBg: 'bg-[#0A4174]/40 border-[#4E8EA2]/40',
+    spotlight: 'rgba(78, 142, 162, 0.16)'
   },
   {
     title: 'Image Processor',
@@ -100,21 +111,21 @@ const projects = [
     desc: 'High-performance suite of computer vision scripts for geometric image manipulation, edge detection, filtering, and pixel restoration.',
     tech: ['Python', 'OpenCV', 'NumPy', 'Matplotlib'],
     link: 'https://github.com/Strangemortal/image_processor',
-    icon: <Cpu className="w-5 h-5 text-amber-600" />,
-    iconBg: 'bg-amber-50 border-amber-100',
-    spotlight: 'rgba(245, 158, 11, 0.12)'
+    icon: <Cpu className="w-5 h-5 text-[#BDD8E9]" />,
+    iconBg: 'bg-[#0A4174]/40 border-[#4E8EA2]/40',
+    spotlight: 'rgba(189, 216, 233, 0.16)'
   }
 ];
 
 const skills = [
-  { name: 'Python', level: 'Core Architecture', icon: <Code2 className="w-5 h-5 text-indigo-600" />, bg: 'bg-indigo-50 border-indigo-100', spotlight: 'rgba(99, 102, 241, 0.12)' },
-  { name: 'Django', level: 'Backend & REST APIs', icon: <Database className="w-5 h-5 text-emerald-600" />, bg: 'bg-emerald-50 border-emerald-100', spotlight: 'rgba(16, 185, 129, 0.12)' },
-  { name: 'React.js', level: 'Interactive UIs', icon: <Layers className="w-5 h-5 text-sky-600" />, bg: 'bg-sky-50 border-sky-100', spotlight: 'rgba(14, 165, 233, 0.12)' },
-  { name: 'DevOps & CI/CD', level: 'Continuous Delivery', icon: <Terminal className="w-5 h-5 text-amber-600" />, bg: 'bg-amber-50 border-amber-100', spotlight: 'rgba(245, 158, 11, 0.12)' },
-  { name: 'Machine Learning', level: 'Graph ML & Networks', icon: <Cpu className="w-5 h-5 text-violet-600" />, bg: 'bg-violet-50 border-violet-100', spotlight: 'rgba(139, 92, 246, 0.12)' },
-  { name: 'Cybersecurity', level: 'Stegano & Encryption', icon: <Shield className="w-5 h-5 text-rose-600" />, bg: 'bg-rose-50 border-rose-100', spotlight: 'rgba(244, 63, 94, 0.12)' },
-  { name: 'Docker', level: 'Container Orchestration', icon: <Boxes className="w-5 h-5 text-blue-600" />, bg: 'bg-blue-50 border-blue-100', spotlight: 'rgba(59, 130, 246, 0.12)' },
-  { name: 'AWS Cloud', level: 'Cloud Infrastructure', icon: <Globe className="w-5 h-5 text-teal-600" />, bg: 'bg-teal-50 border-teal-100', spotlight: 'rgba(20, 184, 166, 0.12)' },
+  { name: 'Python', level: 'Core Architecture', icon: <Code2 className="w-5 h-5 text-[#7BBDE8]" />, bg: 'bg-[#0A4174]/40 border-[#49769F]/40', spotlight: 'rgba(123, 189, 232, 0.16)' },
+  { name: 'Django', level: 'Backend & REST APIs', icon: <Database className="w-5 h-5 text-[#6EA2B3]" />, bg: 'bg-[#0A4174]/40 border-[#49769F]/40', spotlight: 'rgba(110, 162, 179, 0.16)' },
+  { name: 'React.js', level: 'Interactive UIs', icon: <Layers className="w-5 h-5 text-[#BDD8E9]" />, bg: 'bg-[#0A4174]/40 border-[#49769F]/40', spotlight: 'rgba(189, 216, 233, 0.16)' },
+  { name: 'DevOps & CI/CD', level: 'Continuous Delivery', icon: <Terminal className="w-5 h-5 text-[#4E8EA2]" />, bg: 'bg-[#0A4174]/40 border-[#49769F]/40', spotlight: 'rgba(78, 142, 162, 0.16)' },
+  { name: 'Machine Learning', level: 'Graph ML & Networks', icon: <Cpu className="w-5 h-5 text-[#7BBDE8]" />, bg: 'bg-[#0A4174]/40 border-[#49769F]/40', spotlight: 'rgba(123, 189, 232, 0.16)' },
+  { name: 'Cybersecurity', level: 'Stegano & Encryption', icon: <Shield className="w-5 h-5 text-[#BDD8E9]" />, bg: 'bg-[#0A4174]/40 border-[#49769F]/40', spotlight: 'rgba(189, 216, 233, 0.16)' },
+  { name: 'Docker', level: 'Container Orchestration', icon: <Boxes className="w-5 h-5 text-[#6EA2B3]" />, bg: 'bg-[#0A4174]/40 border-[#49769F]/40', spotlight: 'rgba(110, 162, 179, 0.16)' },
+  { name: 'AWS Cloud', level: 'Cloud Infrastructure', icon: <Globe className="w-5 h-5 text-[#4E8EA2]" />, bg: 'bg-[#0A4174]/40 border-[#49769F]/40', spotlight: 'rgba(78, 142, 162, 0.16)' },
 ];
 
 const categories = ['All', 'Systems', 'AI/ML', 'DevOps', 'Cybersecurity'];
@@ -150,18 +161,18 @@ export default function App() {
     : projects.filter(p => p.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] text-slate-900 selection:bg-indigo-100 selection:text-indigo-700 font-sans relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#001D39] text-[#BDD8E9] font-sans relative overflow-x-hidden selection:bg-[#0A4174] selection:text-[#BDD8E9]">
       
-      {/* 1. DYNAMIC MOUSE FOLLOWER WITH EXPANDING AURA & RING */}
+      {/* 1. DYNAMIC MOUSE FOLLOWER WITH EXPANDING SAPPHIRE AURA & RING */}
       <MouseFollower />
 
       {/* 2. FLOATING FROSTED GLASS NAVBAR */}
       <Navbar />
 
-      {/* 3. LIGHT & BRIGHT INTERACTIVE CANVAS PARTICLES (Apple / Stripe style) */}
+      {/* 3. INTERACTIVE CONSTELLATION CANVAS PARTICLES */}
       <ParticleCanvas />
 
-      {/* 4. SOFT LUMINOUS AMBIENT GLOWS (Bright pastel mesh, non-neon) */}
+      {/* 4. SOFT LUMINOUS AMBIENT GLOWS (Midnight Navy, Sapphire & Sky Blue) */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <motion.div 
           animate={{
@@ -170,7 +181,7 @@ export default function App() {
             y: [0, -30, 0]
           }}
           transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-[-5%] left-[5%] w-[45vw] h-[45vw] bg-indigo-200/40 blur-[130px] rounded-full" 
+          className="absolute top-[-5%] left-[5%] w-[45vw] h-[45vw] bg-[#0A4174]/35 blur-[140px] rounded-full" 
         />
         <motion.div 
           animate={{
@@ -179,7 +190,7 @@ export default function App() {
             y: [0, 35, 0]
           }}
           transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-          className="absolute top-[20%] right-[-5%] w-[45vw] h-[45vw] bg-sky-200/45 blur-[140px] rounded-full" 
+          className="absolute top-[20%] right-[-5%] w-[45vw] h-[45vw] bg-[#4E8EA2]/20 blur-[150px] rounded-full" 
         />
         <motion.div 
           animate={{
@@ -188,7 +199,7 @@ export default function App() {
             y: [0, -20, 0]
           }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-          className="absolute bottom-[-5%] left-[20%] w-[45vw] h-[45vw] bg-violet-200/35 blur-[150px] rounded-full" 
+          className="absolute bottom-[-5%] left-[20%] w-[45vw] h-[45vw] bg-[#7BBDE8]/12 blur-[160px] rounded-full" 
         />
       </div>
 
@@ -197,35 +208,35 @@ export default function App() {
         onMouseMove={handleHeroMouseMove}
         className="relative min-h-screen flex items-center justify-center pt-28 pb-16 px-6 overflow-hidden z-10"
       >
-        {/* Subtle grid texture */}
-        <div className="absolute inset-0 opacity-[0.45] pointer-events-none">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:48px_48px]" />
+        {/* Subtle architectural grid texture */}
+        <div className="absolute inset-0 opacity-[0.4] pointer-events-none">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(73,118,159,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(73,118,159,0.12)_1px,transparent_1px)] bg-[size:48px_48px]" />
           <div className="absolute inset-0 bg-radial-gradient" />
         </div>
 
-        {/* CONTINUOUS MOVING FLOATING BADGES WITH MOUSE PARALLAX (Raycast / Stripe style) */}
+        {/* CONTINUOUS MOVING FLOATING BADGES WITH MOUSE PARALLAX */}
         <motion.div style={{ x: badge1X, y: badge1Y }} className="absolute inset-0 pointer-events-none">
           <div className="pointer-events-auto">
             <FloatingBadge
-              icon={<Terminal className="w-4 h-4" />}
+              icon={<Terminal className="w-4 h-4 text-[#7BBDE8]" />}
               title="Python & Django Systems"
               subtitle="High Throughput Architecture"
               className="top-[18%] left-[7%]"
               duration={5.2}
               delay={0.1}
               yOffset={14}
-              themeColor="indigo"
+              themeColor="sky"
             />
 
             <FloatingBadge
-              icon={<Shield className="w-4 h-4" />}
+              icon={<Shield className="w-4 h-4 text-[#BDD8E9]" />}
               title="Stegano Cryptography"
               subtitle="Cipher Quest Winner"
               className="bottom-[18%] left-[9%]"
               duration={6.2}
               delay={1.2}
               yOffset={15}
-              themeColor="emerald"
+              themeColor="sapphire"
             />
           </div>
         </motion.div>
@@ -233,25 +244,25 @@ export default function App() {
         <motion.div style={{ x: badge2X, y: badge2Y }} className="absolute inset-0 pointer-events-none">
           <div className="pointer-events-auto">
             <FloatingBadge
-              icon={<Cpu className="w-4 h-4" />}
+              icon={<Cpu className="w-4 h-4 text-[#6EA2B3]" />}
               title="Graph ML Dynamics"
               subtitle="IEEE ECMI 2026 Conference"
               className="top-[22%] right-[7%]"
               duration={6.5}
               delay={0.6}
               yOffset={16}
-              themeColor="violet"
+              themeColor="cadet"
             />
 
             <FloatingBadge
-              icon={<Layers className="w-4 h-4" />}
+              icon={<Layers className="w-4 h-4 text-[#7BBDE8]" />}
               title="Docker & DevOps CI/CD"
               subtitle="Automated Infrastructure"
               className="bottom-[17%] right-[8%]"
               duration={5.8}
               delay={1.8}
               yOffset={13}
-              themeColor="sky"
+              themeColor="airforce"
             />
           </div>
         </motion.div>
@@ -264,45 +275,45 @@ export default function App() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border border-indigo-200/80 bg-white/90 shadow-sm text-indigo-700 text-xs font-mono font-semibold tracking-wider uppercase"
+            className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border border-[#4E8EA2]/40 bg-[#0A4174]/40 backdrop-blur-md shadow-md text-[#BDD8E9] text-xs font-mono font-semibold tracking-wider uppercase"
           >
-            <Sparkles className="w-3.5 h-3.5 text-indigo-600 animate-spin-slow" />
+            <Sparkles className="w-3.5 h-3.5 text-[#7BBDE8] animate-spin-slow" />
             <span>Software Engineering • AI/ML • DevOps</span>
           </motion.div>
           
-          {/* Main Title */}
+          {/* Main Title - Ultra-crisp high contrast */}
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-heading font-black tracking-tight mb-8 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-700 bg-clip-text text-transparent drop-shadow-sm"
+            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-heading font-black tracking-tight mb-8 bg-gradient-to-b from-white via-[#BDD8E9] to-[#7BBDE8] bg-clip-text text-transparent drop-shadow-[0_4px_30px_rgba(10,65,116,0.5)]"
           >
             Bharat Bhushan
           </motion.h1>
 
-          {/* Subtitle */}
+          {/* Subtitle with High-Readability Contrast */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-lg sm:text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto font-light leading-relaxed mb-12"
+            className="text-lg sm:text-xl md:text-2xl text-[#BDD8E9]/90 max-w-3xl mx-auto font-light leading-relaxed mb-12"
           >
             Architecting robust digital infrastructures and intelligent systems. Focused on{' '}
-            <span className="text-indigo-600 font-semibold underline decoration-indigo-300 underline-offset-4">
+            <span className="text-[#7BBDE8] font-semibold underline decoration-[#7BBDE8]/60 underline-offset-4">
               Scalability
             </span>
             ,{' '}
-            <span className="text-violet-600 font-semibold underline decoration-violet-300 underline-offset-4">
-              Security
+            <span className="text-white font-semibold underline decoration-[#BDD8E9]/60 underline-offset-4">
+              Defensive Security
             </span>
             , and{' '}
-            <span className="text-sky-600 font-semibold underline decoration-sky-300 underline-offset-4">
+            <span className="text-[#6EA2B3] font-semibold underline decoration-[#6EA2B3]/60 underline-offset-4">
               Automation
             </span>
             .
           </motion.p>
 
-          {/* MAGNETIC BUTTONS (Raycast / Awwwards style) */}
+          {/* MAGNETIC BUTTONS */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -313,10 +324,10 @@ export default function App() {
               href="https://github.com/Strangemortal"
               target="_blank"
               strength={0.35}
-              className="group relative px-8 py-4 sm:px-10 sm:py-4.5 rounded-2xl bg-slate-900 text-white font-heading font-bold text-sm tracking-wider uppercase shadow-[0_10px_25px_rgba(15,23,42,0.15)] hover:bg-indigo-600 hover:shadow-[0_15px_35px_rgba(99,102,241,0.3)] transition-all"
+              className="group relative px-8 py-4 sm:px-10 sm:py-4.5 rounded-2xl bg-[#7BBDE8] text-[#001D39] font-heading font-black text-sm tracking-wider uppercase shadow-[0_10px_30px_rgba(123,189,232,0.3)] hover:bg-white hover:shadow-[0_15px_40px_rgba(123,189,232,0.45)] transition-all"
             >
               <span className="flex items-center gap-2.5">
-                <GithubIcon className="w-5 h-5 text-white" />
+                <GithubIcon className="w-5 h-5 text-[#001D39]" />
                 VIEW GITHUB
                 <ArrowRight className="w-4 h-4 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
               </span>
@@ -326,18 +337,18 @@ export default function App() {
               href="https://www.linkedin.com/in/bbhushank/"
               target="_blank"
               strength={0.35}
-              className="group flex items-center gap-2.5 px-8 py-4 sm:px-10 sm:py-4.5 rounded-2xl border border-slate-200/90 bg-white text-slate-800 font-heading font-bold text-sm tracking-wider uppercase shadow-sm hover:border-indigo-400 hover:text-indigo-600 hover:shadow-md transition-all"
+              className="group flex items-center gap-2.5 px-8 py-4 sm:px-10 sm:py-4.5 rounded-2xl border border-[#49769F]/50 bg-[#0A4174]/50 backdrop-blur-md text-white font-heading font-bold text-sm tracking-wider uppercase shadow-sm hover:border-[#7BBDE8] hover:text-[#7BBDE8] hover:bg-[#0A4174]/80 transition-all"
             >
-              <LinkedinIcon className="w-5 h-5 text-indigo-600 group-hover:scale-110 transition-transform" />
+              <LinkedinIcon className="w-5 h-5 text-[#7BBDE8] group-hover:scale-110 transition-transform" />
               LINKEDIN
             </MagneticButton>
 
             <MagneticButton
               href="#projects"
               strength={0.25}
-              className="flex items-center gap-2 px-6 py-4 rounded-2xl border border-transparent text-slate-600 hover:text-slate-900 text-xs font-mono uppercase tracking-wider hover:bg-white/60 transition-all"
+              className="flex items-center gap-2 px-6 py-4 rounded-2xl border border-[#49769F]/30 text-[#BDD8E9] hover:text-white hover:border-[#7BBDE8]/60 hover:bg-[#0A4174]/30 text-xs font-mono uppercase tracking-wider transition-all"
             >
-              <Compass className="w-4 h-4 text-indigo-600" />
+              <Compass className="w-4 h-4 text-[#7BBDE8]" />
               EXPLORE WORK
             </MagneticButton>
           </motion.div>
@@ -347,20 +358,20 @@ export default function App() {
         <motion.div
           animate={{ y: [0, 7, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 pointer-events-none"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#6EA2B3] pointer-events-none"
         >
-          <div className="w-5 h-9 rounded-full border border-slate-300 flex justify-center pt-2 bg-white/70">
+          <div className="w-5 h-9 rounded-full border border-[#49769F]/60 flex justify-center pt-2 bg-[#001427]/80">
             <motion.div
               animate={{ y: [0, 9, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
-              className="w-1 h-2 bg-indigo-600 rounded-full"
+              className="w-1 h-2 bg-[#7BBDE8] rounded-full"
             />
           </div>
-          <span className="text-[10px] font-mono tracking-widest uppercase text-slate-400">SCROLL</span>
+          <span className="text-[10px] font-mono tracking-widest uppercase text-[#6EA2B3]">SCROLL</span>
         </motion.div>
       </section>
 
-      {/* CONTINUOUS MOVING TECH MARQUEE (Stripe / Raycast style) */}
+      {/* CONTINUOUS MOVING TECH MARQUEE */}
       <TechMarquee />
 
       {/* ABOUT & MISSION SECTION WITH LIVE TELEMETRY TERMINAL */}
@@ -375,26 +386,26 @@ export default function App() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-mono font-semibold uppercase tracking-wider mb-6">
-                <Zap className="w-3.5 h-3.5 text-indigo-600" /> Core Philosophy
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0A4174]/50 border border-[#4E8EA2]/40 text-[#7BBDE8] text-xs font-mono font-semibold uppercase tracking-wider mb-6">
+                <Zap className="w-3.5 h-3.5 text-[#7BBDE8]" /> Core Philosophy
               </div>
 
-              <h2 className="text-4xl sm:text-5xl font-heading font-black mb-8 text-slate-900 flex items-center gap-4">
-                <span className="w-12 h-[3px] bg-gradient-to-r from-indigo-500 to-sky-500 rounded-full" />
+              <h2 className="text-4xl sm:text-5xl font-heading font-black mb-8 text-white flex items-center gap-4">
+                <span className="w-12 h-[3px] bg-gradient-to-r from-[#7BBDE8] via-[#4E8EA2] to-[#0A4174] rounded-full" />
                 The Mission
               </h2>
 
-              <div className="space-y-6 text-slate-600 text-base sm:text-lg leading-relaxed font-light">
+              <div className="space-y-6 text-[#BDD8E9]/90 text-base sm:text-lg leading-relaxed font-light">
                 <p>
                   I am a Computer Science Engineering student dedicated to architecting high-performance systems and intelligent applications. My journey is fueled by a relentless curiosity for how technology can solve real-world problems at scale.
                 </p>
                 <p>
                   From building complex{' '}
-                  <span className="text-slate-900 font-medium italic underline decoration-indigo-400 underline-offset-4">
+                  <span className="text-white font-medium italic underline decoration-[#7BBDE8] underline-offset-4">
                     Django backends
                   </span>{' '}
                   to implementing{' '}
-                  <span className="text-slate-900 font-medium italic underline decoration-violet-400 underline-offset-4">
+                  <span className="text-white font-medium italic underline decoration-[#BDD8E9] underline-offset-4">
                     Graph-based ML models
                   </span>
                   , I thrive in environments that challenge technical depth, mathematical elegance, and creative problem-solving.
@@ -406,17 +417,17 @@ export default function App() {
 
               {/* Quick stats pills */}
               <div className="grid grid-cols-3 gap-4 pt-8">
-                <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center hover:border-indigo-300 transition-colors">
-                  <div className="text-2xl font-heading font-black text-indigo-600">IEEE</div>
-                  <div className="text-[11px] font-mono text-slate-500 uppercase mt-1">Conference Author</div>
+                <div className="p-4 rounded-2xl bg-[#001D39]/90 border border-[#49769F]/40 shadow-sm text-center hover:border-[#7BBDE8]/60 transition-colors">
+                  <div className="text-2xl font-heading font-black text-[#7BBDE8]">IEEE</div>
+                  <div className="text-[11px] font-mono text-[#BDD8E9]/80 uppercase mt-1">Conference Author</div>
                 </div>
-                <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center hover:border-violet-300 transition-colors">
-                  <div className="text-2xl font-heading font-black text-violet-600">1st</div>
-                  <div className="text-[11px] font-mono text-slate-500 uppercase mt-1">Cipher Quest Winner</div>
+                <div className="p-4 rounded-2xl bg-[#001D39]/90 border border-[#49769F]/40 shadow-sm text-center hover:border-[#7BBDE8]/60 transition-colors">
+                  <div className="text-2xl font-heading font-black text-white">1st</div>
+                  <div className="text-[11px] font-mono text-[#BDD8E9]/80 uppercase mt-1">Cipher Quest Winner</div>
                 </div>
-                <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center hover:border-emerald-300 transition-colors">
-                  <div className="text-2xl font-heading font-black text-emerald-600">6+</div>
-                  <div className="text-[11px] font-mono text-slate-500 uppercase mt-1">Deployed Systems</div>
+                <div className="p-4 rounded-2xl bg-[#001D39]/90 border border-[#49769F]/40 shadow-sm text-center hover:border-[#7BBDE8]/60 transition-colors">
+                  <div className="text-2xl font-heading font-black text-[#6EA2B3]">6+</div>
+                  <div className="text-[11px] font-mono text-[#BDD8E9]/80 uppercase mt-1">Deployed Systems</div>
                 </div>
               </div>
             </motion.div>
@@ -429,26 +440,26 @@ export default function App() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="absolute -inset-4 bg-gradient-to-r from-indigo-100 via-sky-100 to-transparent blur-2xl rounded-3xl" />
+              <div className="absolute -inset-4 bg-gradient-to-r from-[#0A4174]/40 via-[#4E8EA2]/25 to-transparent blur-2xl rounded-3xl" />
               <LiveTerminal />
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* SKILLS SECTION WITH 3D SPOTLIGHT CARDS (Linear style) */}
-      <section id="skills" className="py-28 px-6 md:px-16 lg:px-28 relative z-10 bg-slate-100/60 border-y border-slate-200/70">
+      {/* SKILLS SECTION WITH 3D SPOTLIGHT CARDS */}
+      <section id="skills" className="py-28 px-6 md:px-16 lg:px-28 relative z-10 bg-[#001427]/70 border-y border-[#49769F]/30">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-50 border border-violet-200 text-violet-700 text-xs font-mono font-semibold uppercase tracking-wider mb-4">
-                <Boxes className="w-3.5 h-3.5 text-violet-600" /> Technical Arsenal
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0A4174]/50 border border-[#4E8EA2]/40 text-[#7BBDE8] text-xs font-mono font-semibold uppercase tracking-wider mb-4">
+                <Boxes className="w-3.5 h-3.5 text-[#7BBDE8]" /> Technical Arsenal
               </div>
-              <h2 className="text-4xl sm:text-6xl font-heading font-black tracking-tight text-slate-900">
-                Specialized <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Capabilities</span>
+              <h2 className="text-4xl sm:text-6xl font-heading font-black tracking-tight text-white">
+                Specialized <span className="bg-gradient-to-r from-[#7BBDE8] via-[#BDD8E9] to-white bg-clip-text text-transparent">Capabilities</span>
               </h2>
             </div>
-            <p className="text-slate-600 font-mono text-sm max-w-md">
+            <p className="text-[#BDD8E9]/80 font-mono text-sm max-w-md">
               Interactive stack matrix equipped with modern runtime tools, distributed paradigms, and defensive security.
             </p>
           </div>
@@ -458,23 +469,23 @@ export default function App() {
               <TiltCard
                 key={skill.name}
                 spotlightColor={skill.spotlight}
-                className="bg-white border border-slate-200/90 shadow-sm hover:border-indigo-300 hover:shadow-[0_15px_35px_rgba(99,102,241,0.08)] group cursor-default"
+                className="bg-[#001D39]/85 border border-[#49769F]/35 shadow-md hover:border-[#7BBDE8]/60 hover:shadow-[0_15px_35px_rgba(10,65,116,0.4)] group cursor-default"
               >
                 <div className="p-7 flex flex-col justify-between h-44">
                   <div className="flex items-center justify-between">
                     <div className={`p-3.5 rounded-2xl border ${skill.bg} group-hover:scale-110 transition-all duration-300`}>
                       {skill.icon}
                     </div>
-                    <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest font-semibold">
+                    <span className="text-[10px] font-mono text-[#6EA2B3] uppercase tracking-widest font-semibold">
                       0{index + 1}
                     </span>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-heading font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                    <h3 className="text-lg font-heading font-bold text-white group-hover:text-[#7BBDE8] transition-colors">
                       {skill.name}
                     </h3>
-                    <p className="text-xs font-mono text-slate-500 mt-1">
+                    <p className="text-xs font-mono text-[#BDD8E9]/70 mt-1">
                       {skill.level}
                     </p>
                   </div>
@@ -491,33 +502,33 @@ export default function App() {
           
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-mono font-semibold uppercase tracking-wider mb-4">
-                <FolderGit2 className="w-3.5 h-3.5 text-indigo-600" /> Featured Repositories
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0A4174]/50 border border-[#4E8EA2]/40 text-[#7BBDE8] text-xs font-mono font-semibold uppercase tracking-wider mb-4">
+                <FolderGit2 className="w-3.5 h-3.5 text-[#7BBDE8]" /> Featured Repositories
               </div>
-              <h2 className="text-5xl sm:text-7xl font-heading font-black italic tracking-tight uppercase text-slate-900">
-                Real-World <span className="text-indigo-600">Deployments</span>
+              <h2 className="text-5xl sm:text-7xl font-heading font-black italic tracking-tight uppercase text-white">
+                Real-World <span className="bg-gradient-to-r from-[#7BBDE8] to-[#BDD8E9] bg-clip-text text-transparent">Deployments</span>
               </h2>
-              <p className="text-slate-500 text-sm sm:text-base mt-2 font-mono">
+              <p className="text-[#6EA2B3] text-sm sm:text-base mt-2 font-mono">
                 / source: github.com/Strangemortal
               </p>
             </div>
 
             {/* Filter Tabs with animated pill */}
-            <div className="flex flex-wrap gap-2 p-1.5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+            <div className="flex flex-wrap gap-2 p-1.5 rounded-2xl bg-[#001427]/80 border border-[#49769F]/40 backdrop-blur-md shadow-md">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
                   className={`relative px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider transition-all ${
                     selectedCategory === cat
-                      ? 'text-white font-bold'
-                      : 'text-slate-600 hover:text-slate-900'
+                      ? 'text-[#001D39] font-bold'
+                      : 'text-[#BDD8E9]/75 hover:text-white'
                   }`}
                 >
                   {selectedCategory === cat && (
                     <motion.div
                       layoutId="activeFilterTab"
-                      className="absolute inset-0 bg-slate-900 rounded-xl"
+                      className="absolute inset-0 bg-[#7BBDE8] rounded-xl shadow-[0_0_15px_rgba(123,189,232,0.4)]"
                       transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                     />
                   )}
@@ -542,7 +553,7 @@ export default function App() {
                 >
                   <TiltCard
                     spotlightColor={project.spotlight}
-                    className="h-full bg-white border border-slate-200/90 shadow-sm hover:border-indigo-300 hover:shadow-[0_20px_45px_rgba(99,102,241,0.1)] transition-all flex flex-col justify-between"
+                    className="h-full bg-[#001D39]/85 border border-[#49769F]/35 shadow-md hover:border-[#7BBDE8]/60 hover:shadow-[0_20px_45px_rgba(10,65,116,0.5)] transition-all flex flex-col justify-between"
                   >
                     <div className="p-8 sm:p-10 flex flex-col h-full justify-between">
                       <div>
@@ -556,7 +567,7 @@ export default function App() {
                             href={project.link}
                             target="_blank"
                             rel="noreferrer"
-                            className="p-3.5 rounded-full bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all duration-300 group"
+                            className="p-3.5 rounded-full bg-[#0A4174]/40 border border-[#49769F]/40 text-[#BDD8E9] hover:bg-[#7BBDE8] hover:text-[#001D39] hover:border-[#7BBDE8] transition-all duration-300 group shadow-sm"
                             aria-label={`View ${project.title} repository`}
                           >
                             <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
@@ -564,27 +575,27 @@ export default function App() {
                         </div>
 
                         {/* Category tag */}
-                        <div className="text-[11px] font-mono font-bold tracking-widest text-indigo-600 uppercase mb-2">
+                        <div className="text-[11px] font-mono font-bold tracking-widest text-[#7BBDE8] uppercase mb-2">
                           {project.category}
                         </div>
 
                         {/* Title */}
-                        <h3 className="text-2xl sm:text-3xl font-heading font-black mb-3 text-slate-900 group-hover:text-indigo-600 transition-colors">
+                        <h3 className="text-2xl sm:text-3xl font-heading font-black mb-3 text-white group-hover:text-[#7BBDE8] transition-colors">
                           {project.title}
                         </h3>
 
-                        {/* Description */}
-                        <p className="text-slate-600 text-sm leading-relaxed mb-8 font-light">
+                        {/* Description - Optimized readability */}
+                        <p className="text-[#BDD8E9]/85 text-sm leading-relaxed mb-8 font-light">
                           {project.desc}
                         </p>
                       </div>
 
                       {/* Tech Stack Tags */}
-                      <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100">
+                      <div className="flex flex-wrap gap-2 pt-4 border-t border-[#0A4174]/60">
                         {project.tech.map((t) => (
                           <span
                             key={t}
-                            className="text-[10px] uppercase tracking-wider font-mono px-3 py-1 rounded-lg border border-slate-200/80 bg-slate-50 text-slate-600 hover:border-indigo-300 hover:text-indigo-600 transition-colors"
+                            className="text-[10px] uppercase tracking-wider font-mono px-3 py-1 rounded-lg border border-[#49769F]/40 bg-[#0A4174]/30 text-[#BDD8E9] hover:border-[#7BBDE8]/60 hover:text-white transition-colors"
                           >
                             {t}
                           </span>
@@ -600,14 +611,14 @@ export default function App() {
       </section>
 
       {/* ACHIEVEMENTS & RESEARCH SECTION */}
-      <section id="achievements" className="py-28 px-6 md:px-16 lg:px-28 z-10 relative bg-slate-50/70 border-t border-slate-200/80">
+      <section id="achievements" className="py-28 px-6 md:px-16 lg:px-28 z-10 relative bg-[#001427]/60 border-t border-[#49769F]/30">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-mono font-semibold uppercase tracking-wider mb-4">
-              <Sparkles className="w-3.5 h-3.5 text-amber-600" /> Recognitions & Publications
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0A4174]/50 border border-[#4E8EA2]/40 text-[#7BBDE8] text-xs font-mono font-semibold uppercase tracking-wider mb-4">
+              <Sparkles className="w-3.5 h-3.5 text-[#7BBDE8]" /> Recognitions & Publications
             </div>
-            <h2 className="text-4xl sm:text-6xl font-heading font-black tracking-tight text-slate-900">
-              Milestones & <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">Honors</span>
+            <h2 className="text-4xl sm:text-6xl font-heading font-black tracking-tight text-white">
+              Milestones & <span className="bg-gradient-to-r from-[#7BBDE8] via-[#BDD8E9] to-white bg-clip-text text-transparent">Honors</span>
             </h2>
           </div>
           
@@ -639,31 +650,31 @@ export default function App() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.12 }}
                 whileHover={{ scale: 1.01 }}
-                className="group relative flex flex-col md:flex-row items-start md:items-center justify-between gap-6 bg-white border border-slate-200/90 rounded-[28px] p-8 sm:p-10 shadow-sm hover:border-indigo-300 hover:shadow-[0_15px_35px_rgba(99,102,241,0.06)] transition-all"
+                className="group relative flex flex-col md:flex-row items-start md:items-center justify-between gap-6 bg-[#001D39]/85 border border-[#49769F]/35 rounded-[28px] p-8 sm:p-10 shadow-md hover:border-[#7BBDE8]/60 hover:shadow-[0_15px_35px_rgba(10,65,116,0.35)] transition-all"
               >
                 <div className="flex items-start md:items-center gap-6">
-                  <div className="text-indigo-600 font-heading font-black text-4xl opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all font-mono">
+                  <div className="text-[#7BBDE8] font-heading font-black text-4xl opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all font-mono">
                     0{index + 1}
                   </div>
                   <div>
                     <div className="flex items-center gap-3 mb-1">
-                      <h3 className="text-2xl font-heading font-black text-slate-900 group-hover:text-indigo-600 transition-colors">
+                      <h3 className="text-2xl font-heading font-black text-white group-hover:text-[#7BBDE8] transition-colors">
                         {exp.title}
                       </h3>
-                      <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 uppercase font-semibold">
+                      <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-[#0A4174]/70 border border-[#4E8EA2]/40 text-[#7BBDE8] uppercase font-semibold">
                         {exp.tag}
                       </span>
                     </div>
-                    <div className="text-indigo-600 text-xs mb-2 tracking-[0.2em] uppercase font-mono font-bold">
+                    <div className="text-[#6EA2B3] text-xs mb-2 tracking-[0.2em] uppercase font-mono font-bold">
                       {exp.place}
                     </div>
-                    <p className="text-slate-600 leading-relaxed font-light text-base max-w-3xl">
+                    <p className="text-[#BDD8E9]/85 leading-relaxed font-light text-base max-w-3xl">
                       {exp.desc}
                     </p>
                   </div>
                 </div>
 
-                <div className="p-3 rounded-full bg-slate-50 border border-slate-200 text-slate-400 group-hover:text-indigo-600 group-hover:border-indigo-300 transition-colors self-end md:self-center">
+                <div className="p-3 rounded-full bg-[#0A4174]/40 border border-[#49769F]/40 text-[#6EA2B3] group-hover:text-[#7BBDE8] group-hover:border-[#7BBDE8] transition-colors self-end md:self-center">
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
               </motion.div>
@@ -672,35 +683,58 @@ export default function App() {
         </div>
       </section>
 
-      {/* DESIGN INSPIRATION ACKNOWLEDGMENT */}
-      <section className="py-16 px-6 relative z-10 border-t border-slate-200/80 bg-white">
+      {/* BESPOKE COLOR PALETTE & DESIGN SYSTEM SHOWCASE */}
+      <section className="py-20 px-6 relative z-10 border-t border-[#49769F]/30 bg-[#001427]/80">
         <div className="max-w-5xl mx-auto">
-          <div className="p-8 rounded-[24px] bg-slate-50/80 border border-slate-200/80 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <div className="text-xs font-mono uppercase tracking-widest text-indigo-600 mb-1 flex items-center gap-2 font-bold">
-                <Sparkles className="w-3.5 h-3.5" /> Motion & Interactive Engineering
+          <div className="p-8 sm:p-10 rounded-[28px] bg-[#001D39]/80 border border-[#49769F]/35 shadow-lg backdrop-blur-md">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+              <div>
+                <div className="text-xs font-mono uppercase tracking-widest text-[#7BBDE8] mb-1 flex items-center gap-2 font-bold">
+                  <Palette className="w-3.5 h-3.5 text-[#7BBDE8]" /> Design System & Color Harmony
+                </div>
+                <h4 className="text-2xl font-heading font-bold text-white">
+                  Engineered with Midnight Sapphire & Powder Ice Palette
+                </h4>
+                <p className="text-[#BDD8E9]/75 text-xs font-mono mt-1">
+                  High-contrast typography (WCAG AAA compliant), luminous depth mapping, and specular cursor reflections.
+                </p>
               </div>
-              <h4 className="text-xl font-heading font-bold text-slate-900">
-                Light & Bright Aesthetics Inspired by World-Class Interfaces
-              </h4>
-              <p className="text-slate-500 text-xs font-mono mt-1">
-                Linear (3D perspective tilt & specular cursor spotlight) • Apple (interactive particle constellation physics & mouse response) • Raycast / Stripe (magnetic physics & ambient floating badges)
-              </p>
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#0A4174]/40 border border-[#4E8EA2]/40 text-[#7BBDE8] text-xs font-mono">
+                <CheckCircle2 className="w-3.5 h-3.5" /> High Readability Grade
+              </div>
             </div>
-            <div className="flex gap-2 shrink-0">
-              <span className="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-xs font-mono text-slate-700 font-medium shadow-sm">Linear</span>
-              <span className="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-xs font-mono text-slate-700 font-medium shadow-sm">Apple</span>
-              <span className="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-xs font-mono text-slate-700 font-medium shadow-sm">Raycast</span>
+
+            {/* Visual Color Palette Swatches */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+              {paletteShowcase.map((color) => (
+                <div
+                  key={color.hex}
+                  className="p-3 rounded-2xl bg-[#001427]/70 border border-[#49769F]/30 flex flex-col justify-between hover:border-[#7BBDE8]/60 transition-colors group"
+                >
+                  <div
+                    className="w-full h-10 rounded-xl mb-3 shadow-inner border border-white/10 group-hover:scale-105 transition-transform"
+                    style={{ backgroundColor: color.hex }}
+                  />
+                  <div>
+                    <span className="text-[11px] font-mono font-bold text-white block">
+                      {color.hex}
+                    </span>
+                    <span className="text-[9px] font-mono text-[#6EA2B3] block truncate mt-0.5">
+                      {color.name}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* CONTACT SECTION WITH MAGNETIC ACTION */}
-      <section id="contact" className="py-36 px-6 relative overflow-hidden z-10 text-center bg-gradient-to-b from-white via-slate-50 to-indigo-50/30">
+      <section id="contact" className="py-36 px-6 relative overflow-hidden z-10 text-center bg-gradient-to-b from-[#001D39] via-[#001427] to-[#001121]">
         
         {/* Soft center radiant aura */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-indigo-200/30 blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-[#0A4174]/35 blur-[160px] rounded-full pointer-events-none" />
 
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.div
@@ -709,19 +743,19 @@ export default function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-mono font-bold tracking-wider uppercase mb-8 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0A4174]/60 border border-[#4E8EA2]/40 text-[#7BBDE8] text-xs font-mono font-bold tracking-wider uppercase mb-8 shadow-sm">
               Initiate Collaboration
             </div>
 
-            <h2 className="text-6xl sm:text-8xl md:text-9xl font-heading font-black tracking-tight mb-12 leading-none text-slate-950">
-              LET'S <span className="bg-gradient-to-r from-indigo-600 via-sky-600 to-violet-600 bg-clip-text text-transparent">SCALE</span>.
+            <h2 className="text-6xl sm:text-8xl md:text-9xl font-heading font-black tracking-tight mb-12 leading-none text-white">
+              LET'S <span className="bg-gradient-to-r from-[#7BBDE8] via-[#BDD8E9] to-white bg-clip-text text-transparent">SCALE</span>.
             </h2>
 
             <div className="flex flex-col items-center gap-10">
               <MagneticButton
                 href="mailto:bharat.workspace974@gmail.com"
                 strength={0.4}
-                className="group relative px-14 py-6 sm:px-20 sm:py-8 rounded-[30px] bg-slate-900 text-white font-heading font-black text-xl sm:text-2xl hover:bg-indigo-600 shadow-[0_15px_40px_rgba(15,23,42,0.18)] hover:shadow-[0_20px_50px_rgba(99,102,241,0.35)] transition-all uppercase"
+                className="group relative px-14 py-6 sm:px-20 sm:py-8 rounded-[30px] bg-[#7BBDE8] text-[#001D39] font-heading font-black text-xl sm:text-2xl hover:bg-white shadow-[0_15px_40px_rgba(123,189,232,0.35)] hover:shadow-[0_20px_50px_rgba(123,189,232,0.5)] transition-all uppercase"
               >
                 <span className="flex items-center gap-4">
                   <span>Contact Bharat</span>
@@ -735,7 +769,7 @@ export default function App() {
                   href="https://github.com/Strangemortal"
                   target="_blank"
                   strength={0.4}
-                  className="p-5 sm:p-6 rounded-[22px] bg-white border border-slate-200 shadow-sm hover:border-indigo-300 hover:text-indigo-600 hover:shadow-md transition-all text-slate-800"
+                  className="p-5 sm:p-6 rounded-[22px] bg-[#0A4174]/50 border border-[#49769F]/40 shadow-sm hover:border-[#7BBDE8] hover:text-[#7BBDE8] hover:shadow-[0_0_20px_rgba(123,189,232,0.2)] transition-all text-[#BDD8E9]"
                   aria-label="GitHub Profile"
                 >
                   <GithubIcon className="w-6 h-6" />
@@ -745,17 +779,17 @@ export default function App() {
                   href="https://www.linkedin.com/in/bbhushank/"
                   target="_blank"
                   strength={0.4}
-                  className="p-5 sm:p-6 rounded-[22px] bg-white border border-slate-200 shadow-sm hover:border-indigo-300 hover:text-indigo-600 hover:shadow-md transition-all text-slate-800"
+                  className="p-5 sm:p-6 rounded-[22px] bg-[#0A4174]/50 border border-[#49769F]/40 shadow-sm hover:border-[#7BBDE8] hover:text-[#7BBDE8] hover:shadow-[0_0_20px_rgba(123,189,232,0.2)] transition-all text-[#BDD8E9]"
                   aria-label="LinkedIn Profile"
                 >
-                  <LinkedinIcon className="w-6 h-6 text-indigo-600" />
+                  <LinkedinIcon className="w-6 h-6 text-[#7BBDE8]" />
                 </MagneticButton>
 
                 <MagneticButton
                   href="mailto:bharat.workspace974@gmail.com"
                   target="_blank"
                   strength={0.4}
-                  className="p-5 sm:p-6 rounded-[22px] bg-white border border-slate-200 shadow-sm hover:border-indigo-300 hover:text-indigo-600 hover:shadow-md transition-all text-slate-800"
+                  className="p-5 sm:p-6 rounded-[22px] bg-[#0A4174]/50 border border-[#49769F]/40 shadow-sm hover:border-[#7BBDE8] hover:text-[#7BBDE8] hover:shadow-[0_0_20px_rgba(123,189,232,0.2)] transition-all text-[#BDD8E9]"
                   aria-label="Email Bharat"
                 >
                   <Mail className="w-6 h-6" />
@@ -767,8 +801,8 @@ export default function App() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-12 border-t border-slate-200 text-center relative z-10 bg-white">
-        <p className="text-slate-500 text-[11px] font-mono tracking-[0.25em] uppercase font-medium">
+      <footer className="py-12 border-t border-[#49769F]/30 text-center relative z-10 bg-[#001427]/80 backdrop-blur-md">
+        <p className="text-[#6EA2B3] text-[11px] font-mono tracking-[0.25em] uppercase font-medium">
           &copy; {new Date().getFullYear()} Bharat Bhushan / Engineered for Excellence
         </p>
       </footer>

@@ -4,7 +4,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 export default function TiltCard({
   children,
   className = '',
-  spotlightColor = 'rgba(99, 102, 241, 0.1)',
+  spotlightColor = 'rgba(123, 189, 232, 0.15)',
 }) {
   const cardRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -18,9 +18,9 @@ export default function TiltCard({
   const mouseXSpring = useSpring(x, springConfig);
   const mouseYSpring = useSpring(y, springConfig);
 
-  // 3D rotation (-8deg to 8deg)
-  const rotateX = useTransform(mouseYSpring, [0, 1], [8, -8]);
-  const rotateY = useTransform(mouseXSpring, [0, 1], [-8, 8]);
+  // 3D rotation (-7deg to 7deg)
+  const rotateX = useTransform(mouseYSpring, [0, 1], [7, -7]);
+  const rotateY = useTransform(mouseXSpring, [0, 1], [-7, 7]);
 
   // Spotlight coordinates in pixels
   const [spotlightPos, setSpotlightPos] = useState({ x: 0, y: 0 });
@@ -64,7 +64,7 @@ export default function TiltCard({
       transition={{ duration: 0.2 }}
       className={`tilt-card relative rounded-[28px] overflow-hidden transition-all duration-300 ${className}`}
     >
-      {/* Light specular cursor spotlight reflection */}
+      {/* Specular cursor spotlight reflection */}
       <div
         className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-300"
         style={{
@@ -75,7 +75,7 @@ export default function TiltCard({
 
       {/* Dynamic border reflection highlight */}
       <div
-        className="pointer-events-none absolute inset-0 z-20 rounded-[28px] border border-indigo-500/20 transition-opacity duration-300"
+        className="pointer-events-none absolute inset-0 z-20 rounded-[28px] border border-[#7BBDE8]/30 transition-opacity duration-300"
         style={{
           opacity: isHovered ? 1 : 0,
         }}

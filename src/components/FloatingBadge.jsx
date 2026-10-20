@@ -9,32 +9,32 @@ export default function FloatingBadge({
   duration = 5,
   delay = 0,
   yOffset = 14,
-  themeColor = 'indigo',
+  themeColor = 'sky',
 }) {
   const colorMap = {
-    indigo: {
-      border: 'hover:border-indigo-300',
-      badgeBg: 'bg-indigo-50 text-indigo-600 border-indigo-100',
-      shadow: 'shadow-[0_10px_30px_rgba(99,102,241,0.1)]',
-    },
     sky: {
-      border: 'hover:border-sky-300',
-      badgeBg: 'bg-sky-50 text-sky-600 border-sky-100',
-      shadow: 'shadow-[0_10px_30px_rgba(14,165,233,0.1)]',
+      border: 'hover:border-[#7BBDE8]/60',
+      badgeBg: 'bg-[#7BBDE8]/15 text-[#7BBDE8] border-[#7BBDE8]/30',
+      shadow: 'shadow-[0_10px_30px_rgba(10,65,116,0.35)]',
     },
-    violet: {
-      border: 'hover:border-violet-300',
-      badgeBg: 'bg-violet-50 text-violet-600 border-violet-100',
-      shadow: 'shadow-[0_10px_30px_rgba(139,92,246,0.1)]',
+    sapphire: {
+      border: 'hover:border-[#4E8EA2]/60',
+      badgeBg: 'bg-[#0A4174]/70 text-[#BDD8E9] border-[#49769F]/40',
+      shadow: 'shadow-[0_10px_30px_rgba(0,29,57,0.5)]',
     },
-    emerald: {
-      border: 'hover:border-emerald-300',
-      badgeBg: 'bg-emerald-50 text-emerald-600 border-emerald-100',
-      shadow: 'shadow-[0_10px_30px_rgba(16,185,129,0.1)]',
+    cadet: {
+      border: 'hover:border-[#6EA2B3]/60',
+      badgeBg: 'bg-[#4E8EA2]/25 text-[#BDD8E9] border-[#4E8EA2]/40',
+      shadow: 'shadow-[0_10px_30px_rgba(78,142,162,0.25)]',
+    },
+    airforce: {
+      border: 'hover:border-[#7BBDE8]/50',
+      badgeBg: 'bg-[#6EA2B3]/20 text-[#7BBDE8] border-[#6EA2B3]/35',
+      shadow: 'shadow-[0_10px_30px_rgba(110,162,179,0.25)]',
     },
   };
 
-  const style = colorMap[themeColor] || colorMap.indigo;
+  const style = colorMap[themeColor] || colorMap.sky;
 
   return (
     <motion.div
@@ -62,17 +62,17 @@ export default function FloatingBadge({
         scale: { duration: 0.8, delay: delay * 0.4 },
       }}
       whileHover={{ scale: 1.06, y: -yOffset }}
-      className={`absolute z-20 hidden md:flex items-center gap-3.5 px-4 py-3 rounded-2xl border border-slate-200/90 bg-white/95 backdrop-blur-xl ${style.shadow} ${style.border} cursor-default select-none transition-all duration-300 ${className}`}
+      className={`absolute z-20 hidden md:flex items-center gap-3.5 px-4 py-3 rounded-2xl border border-[#49769F]/40 bg-[#001D39]/85 backdrop-blur-xl ${style.shadow} ${style.border} cursor-default select-none transition-all duration-300 ${className}`}
     >
-      <div className={`p-2 rounded-xl border flex items-center justify-center ${style.badgeBg}`}>
+      <div className={`p-2.5 rounded-xl border flex items-center justify-center ${style.badgeBg}`}>
         {icon}
       </div>
       <div>
-        <div className="text-[13px] font-bold text-slate-800 tracking-tight leading-tight flex items-center gap-2">
+        <div className="text-[13px] font-bold text-white tracking-tight leading-tight flex items-center gap-2">
           {title}
         </div>
         {subtitle && (
-          <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500 mt-0.5">
+          <div className="text-[10px] font-mono uppercase tracking-wider text-[#BDD8E9]/80 mt-0.5">
             {subtitle}
           </div>
         )}
