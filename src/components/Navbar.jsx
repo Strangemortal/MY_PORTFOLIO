@@ -31,7 +31,7 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4 sm:pt-6 pointer-events-none"
     >
       <nav
-        className={`pointer-events-auto flex items-center justify-between gap-3 sm:gap-6 px-4 sm:px-5 py-2 rounded-full transition-all duration-300 ${
+        className={`pointer-events-auto flex items-center justify-between gap-4 sm:gap-8 px-4 sm:px-6 py-2 rounded-full transition-all duration-300 ${
           scrolled
             ? 'bg-white/90 dark:bg-[#001D39]/90 backdrop-blur-xl border border-[#BDD8E9] dark:border-[#49769F]/45 shadow-[0_12px_40px_rgba(10,65,116,0.12)] dark:shadow-[0_12px_40px_rgba(0,10,25,0.7)]'
             : 'bg-white/80 dark:bg-[#001D39]/75 backdrop-blur-md border border-[#BDD8E9]/70 dark:border-[#49769F]/30 shadow-sm'
@@ -85,16 +85,8 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Live Status indicator, System Theme Toggle & CTA */}
+        {/* System Theme Toggle & CTA */}
         <div className="flex items-center gap-2 sm:gap-3">
-          <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-[#BDD8E9]/30 dark:bg-[#0A4174]/50 border border-[#BDD8E9] dark:border-[#4E8EA2]/40 text-[#0A4174] dark:text-[#7BBDE8] text-[10px] font-mono font-semibold">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#7BBDE8] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0A4174] dark:bg-[#7BBDE8]"></span>
-            </span>
-            AVAILABLE FOR WORK
-          </div>
-
           {/* Theme Selector: Light | System | Dark */}
           <div className="flex items-center p-0.5 rounded-full border border-[#BDD8E9] dark:border-[#49769F]/40 bg-[#F0F7FC] dark:bg-[#001427]/80 shadow-inner">
             <button
@@ -114,7 +106,7 @@ export default function Navbar() {
               className={`p-1.5 rounded-full transition-all text-[10px] font-mono flex items-center gap-1 ${
                 theme === 'system'
                   ? 'bg-[#0A4174] dark:bg-[#7BBDE8] text-white dark:text-[#001D39] font-bold shadow-sm'
-                  : 'text-[#49769F] dark:text-[#BDD8E9]/70 hover:text-[#001D39] dark:hover:text-white'
+                  : 'text-[#49769F] dark:text-[#BDD8E9]/70 hover:text-[#0A4174] dark:hover:text-white'
               }`}
             >
               <Laptop className="w-3.5 h-3.5" />
@@ -134,7 +126,7 @@ export default function Navbar() {
 
           <MagneticButton
             href="#contact"
-            className="px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-bold font-mono tracking-wider uppercase bg-[#0A4174] dark:bg-[#7BBDE8] text-white dark:text-[#001D39] hover:bg-[#001D39] dark:hover:bg-white shadow-sm hover:shadow-[0_0_20px_rgba(123,189,232,0.4)] transition-all font-heading"
+            className="px-4 py-1.5 rounded-full text-xs font-bold font-mono tracking-wider uppercase bg-[#0A4174] dark:bg-[#7BBDE8] text-white dark:text-[#001D39] hover:bg-[#001D39] dark:hover:bg-white shadow-sm hover:shadow-[0_0_20px_rgba(123,189,232,0.4)] transition-all font-heading"
           >
             Connect
           </MagneticButton>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion';
 import { 
   Mail, 
   ExternalLink, 
@@ -29,6 +29,7 @@ import MagneticButton from './components/MagneticButton';
 import FloatingBadge from './components/FloatingBadge';
 import TechMarquee from './components/TechMarquee';
 import LiveTerminal from './components/LiveTerminal';
+import ScrollReveal from './components/ScrollReveal';
 
 // Custom SVG Icons
 const GithubIcon = ({ className = 'w-5 h-5' }) => (
@@ -129,6 +130,12 @@ export default function App() {
   const heroSpringConfig = { damping: 30, stiffness: 200 };
   const smoothHeroX = useSpring(heroMouseX, heroSpringConfig);
   const smoothHeroY = useSpring(heroMouseY, heroSpringConfig);
+
+  // Scroll driven fade-out for hero
+  const { scrollY } = useScroll();
+  const heroContentOpacity = useTransform(scrollY, [0, 480], [1, 0.1]);
+  const heroContentY = useTransform(scrollY, [0, 480], [0, 50]);
+  const heroContentScale = useTransform(scrollY, [0, 480], [1, 0.96]);
 
   // Parallax offsets for floating items
   const badge1X = useTransform(smoothHeroX, [-500, 500], [-18, 18]);
@@ -256,8 +263,11 @@ export default function App() {
           </div>
         </motion.div>
 
-        {/* HERO CONTENT */}
-        <div className="relative z-10 text-center max-w-5xl mx-auto">
+        {/* HERO CONTENT - Responsive Scroll Fade/Exit */}
+        <motion.div 
+          style={{ opacity: heroContentOpacity, y: heroContentY, scale: heroContentScale }}
+          className="relative z-10 text-center max-w-5xl mx-auto"
+        >
           
           {/* Status Badge */}
           <motion.div
@@ -341,7 +351,7 @@ export default function App() {
               EXPLORE WORK
             </MagneticButton>
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* Scroll indicator */}
         <motion.div
@@ -360,21 +370,18 @@ export default function App() {
         </motion.div>
       </section>
 
-      {/* CONTINUOUS MOVING TECH MARQUEE */}
-      <TechMarquee />
+      {/* CONTINUOUS MOVING TECH MARQUEE WITH SCROLL FADE */}
+      <ScrollReveal yOffset={30} amount={0.1}>
+        <TechMarquee />
+      </ScrollReveal>
 
-      {/* ABOUT & MISSION SECTION WITH LIVE TELEMETRY TERMINAL */}
+      {/* ABOUT & MISSION SECTION WITH BIDIRECTIONAL SCROLL FADE */}
       <section id="mission" className="py-28 px-6 md:px-16 lg:px-28 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
             
-            {/* Mission Text */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            {/* Mission Text - Animated on Scroll */}
+            <ScrollReveal direction="right" xOffset={-35} yOffset={25}>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#BDD8E9]/30 dark:bg-[#0A4174]/50 border border-[#BDD8E9] dark:border-[#4E8EA2]/40 text-[#0A4174] dark:text-[#7BBDE8] text-xs font-mono font-semibold uppercase tracking-wider mb-6">
                 <Zap className="w-3.5 h-3.5 text-[#0A4174] dark:text-[#7BBDE8]" /> Core Philosophy
               </div>
@@ -404,140 +411,152 @@ export default function App() {
                 </p>
               </div>
 
-              {/* Quick stats pills */}
+              {/* Quick stats pills with staggered reveal */}
               <div className="grid grid-cols-3 gap-4 pt-8">
-                <div className="p-4 rounded-2xl bg-white/90 dark:bg-[#001D39]/90 border border-[#BDD8E9] dark:border-[#49769F]/40 shadow-sm text-center hover:border-[#0A4174] dark:hover:border-[#7BBDE8]/60 transition-colors">
-                  <div className="text-2xl font-heading font-black text-[#0A4174] dark:text-[#7BBDE8]">IEEE</div>
-                  <div className="text-[11px] font-mono text-[#49769F] dark:text-[#BDD8E9]/80 uppercase mt-1">Conference Author</div>
-                </div>
-                <div className="p-4 rounded-2xl bg-white/90 dark:bg-[#001D39]/90 border border-[#BDD8E9] dark:border-[#49769F]/40 shadow-sm text-center hover:border-[#0A4174] dark:hover:border-[#7BBDE8]/60 transition-colors">
-                  <div className="text-2xl font-heading font-black text-[#001D39] dark:text-white">1st</div>
-                  <div className="text-[11px] font-mono text-[#49769F] dark:text-[#BDD8E9]/80 uppercase mt-1">Cipher Quest Winner</div>
-                </div>
-                <div className="p-4 rounded-2xl bg-white/90 dark:bg-[#001D39]/90 border border-[#BDD8E9] dark:border-[#49769F]/40 shadow-sm text-center hover:border-[#0A4174] dark:hover:border-[#7BBDE8]/60 transition-colors">
-                  <div className="text-2xl font-heading font-black text-[#4E8EA2] dark:text-[#6EA2B3]">6+</div>
-                  <div className="text-[11px] font-mono text-[#49769F] dark:text-[#BDD8E9]/80 uppercase mt-1">Deployed Systems</div>
-                </div>
+                <ScrollReveal delay={0.08} yOffset={25}>
+                  <div className="p-4 rounded-2xl bg-white/90 dark:bg-[#001D39]/90 border border-[#BDD8E9] dark:border-[#49769F]/40 shadow-sm text-center hover:border-[#0A4174] dark:hover:border-[#7BBDE8]/60 transition-colors">
+                    <div className="text-2xl font-heading font-black text-[#0A4174] dark:text-[#7BBDE8]">IEEE</div>
+                    <div className="text-[11px] font-mono text-[#49769F] dark:text-[#BDD8E9]/80 uppercase mt-1">Conference Author</div>
+                  </div>
+                </ScrollReveal>
+                
+                <ScrollReveal delay={0.16} yOffset={25}>
+                  <div className="p-4 rounded-2xl bg-white/90 dark:bg-[#001D39]/90 border border-[#BDD8E9] dark:border-[#49769F]/40 shadow-sm text-center hover:border-[#0A4174] dark:hover:border-[#7BBDE8]/60 transition-colors">
+                    <div className="text-2xl font-heading font-black text-[#001D39] dark:text-white">1st</div>
+                    <div className="text-[11px] font-mono text-[#49769F] dark:text-[#BDD8E9]/80 uppercase mt-1">Cipher Quest Winner</div>
+                  </div>
+                </ScrollReveal>
+
+                <ScrollReveal delay={0.24} yOffset={25}>
+                  <div className="p-4 rounded-2xl bg-white/90 dark:bg-[#001D39]/90 border border-[#BDD8E9] dark:border-[#49769F]/40 shadow-sm text-center hover:border-[#0A4174] dark:hover:border-[#7BBDE8]/60 transition-colors">
+                    <div className="text-2xl font-heading font-black text-[#4E8EA2] dark:text-[#6EA2B3]">6+</div>
+                    <div className="text-[11px] font-mono text-[#49769F] dark:text-[#BDD8E9]/80 uppercase mt-1">Deployed Systems</div>
+                  </div>
+                </ScrollReveal>
               </div>
-            </motion.div>
+            </ScrollReveal>
 
             {/* Live Terminal & Interactive Telemetry */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
-            >
-              <div className="absolute -inset-4 bg-gradient-to-r from-[#BDD8E9]/40 dark:from-[#0A4174]/40 via-[#7BBDE8]/20 dark:via-[#4E8EA2]/25 to-transparent blur-2xl rounded-3xl" />
-              <LiveTerminal />
-            </motion.div>
+            <ScrollReveal direction="left" xOffset={35} yOffset={25}>
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-r from-[#BDD8E9]/40 dark:from-[#0A4174]/40 via-[#7BBDE8]/20 dark:via-[#4E8EA2]/25 to-transparent blur-2xl rounded-3xl" />
+                <LiveTerminal />
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* SKILLS SECTION WITH 3D SPOTLIGHT CARDS */}
+      {/* SKILLS SECTION WITH BIDIRECTIONAL SCROLL FADE */}
       <section id="skills" className="py-28 px-6 md:px-16 lg:px-28 relative z-10 bg-white/60 dark:bg-[#001427]/70 border-y border-[#BDD8E9] dark:border-[#49769F]/30">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#BDD8E9]/30 dark:bg-[#0A4174]/50 border border-[#BDD8E9] dark:border-[#4E8EA2]/40 text-[#0A4174] dark:text-[#7BBDE8] text-xs font-mono font-semibold uppercase tracking-wider mb-4">
-                <Boxes className="w-3.5 h-3.5 text-[#0A4174] dark:text-[#7BBDE8]" /> Technical Arsenal
+          <ScrollReveal yOffset={35}>
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#BDD8E9]/30 dark:bg-[#0A4174]/50 border border-[#BDD8E9] dark:border-[#4E8EA2]/40 text-[#0A4174] dark:text-[#7BBDE8] text-xs font-mono font-semibold uppercase tracking-wider mb-4">
+                  <Boxes className="w-3.5 h-3.5 text-[#0A4174] dark:text-[#7BBDE8]" /> Technical Arsenal
+                </div>
+                <h2 className="text-4xl sm:text-6xl font-heading font-black tracking-tight text-[#001D39] dark:text-white">
+                  Specialized <span className="bg-gradient-to-r from-[#0A4174] via-[#4E8EA2] to-[#7BBDE8] dark:from-[#7BBDE8] dark:via-[#BDD8E9] dark:to-white bg-clip-text text-transparent">Capabilities</span>
+                </h2>
               </div>
-              <h2 className="text-4xl sm:text-6xl font-heading font-black tracking-tight text-[#001D39] dark:text-white">
-                Specialized <span className="bg-gradient-to-r from-[#0A4174] via-[#4E8EA2] to-[#7BBDE8] dark:from-[#7BBDE8] dark:via-[#BDD8E9] dark:to-white bg-clip-text text-transparent">Capabilities</span>
-              </h2>
+              <p className="text-[#49769F] dark:text-[#BDD8E9]/80 font-mono text-sm max-w-md">
+                Interactive stack matrix equipped with modern runtime tools, distributed paradigms, and defensive security.
+              </p>
             </div>
-            <p className="text-[#49769F] dark:text-[#BDD8E9]/80 font-mono text-sm max-w-md">
-              Interactive stack matrix equipped with modern runtime tools, distributed paradigms, and defensive security.
-            </p>
-          </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {skills.map((skill, index) => (
-              <TiltCard
+              <ScrollReveal
                 key={skill.name}
-                spotlightColor={skill.spotlight}
-                className="bg-white dark:bg-[#001D39]/85 border border-[#BDD8E9] dark:border-[#49769F]/35 shadow-sm dark:shadow-md hover:border-[#0A4174] dark:hover:border-[#7BBDE8]/60 hover:shadow-[0_15px_35px_rgba(10,65,116,0.12)] dark:hover:shadow-[0_15px_35px_rgba(10,65,116,0.4)] group cursor-default"
+                delay={(index % 4) * 0.08}
+                yOffset={40}
+                amount={0.12}
               >
-                <div className="p-7 flex flex-col justify-between h-44">
-                  <div className="flex items-center justify-between">
-                    <div className={`p-3.5 rounded-2xl border ${skill.bg} group-hover:scale-110 transition-all duration-300`}>
-                      {skill.icon}
+                <TiltCard
+                  spotlightColor={skill.spotlight}
+                  className="bg-white dark:bg-[#001D39]/85 border border-[#BDD8E9] dark:border-[#49769F]/35 shadow-sm dark:shadow-md hover:border-[#0A4174] dark:hover:border-[#7BBDE8]/60 hover:shadow-[0_15px_35px_rgba(10,65,116,0.12)] dark:hover:shadow-[0_15px_35px_rgba(10,65,116,0.4)] group cursor-default"
+                >
+                  <div className="p-7 flex flex-col justify-between h-44">
+                    <div className="flex items-center justify-between">
+                      <div className={`p-3.5 rounded-2xl border ${skill.bg} group-hover:scale-110 transition-all duration-300`}>
+                        {skill.icon}
+                      </div>
+                      <span className="text-[10px] font-mono text-[#49769F] dark:text-[#6EA2B3] uppercase tracking-widest font-semibold">
+                        0{index + 1}
+                      </span>
                     </div>
-                    <span className="text-[10px] font-mono text-[#49769F] dark:text-[#6EA2B3] uppercase tracking-widest font-semibold">
-                      0{index + 1}
-                    </span>
-                  </div>
 
-                  <div>
-                    <h3 className="text-lg font-heading font-bold text-[#001D39] dark:text-white group-hover:text-[#0A4174] dark:group-hover:text-[#7BBDE8] transition-colors">
-                      {skill.name}
-                    </h3>
-                    <p className="text-xs font-mono text-[#49769F] dark:text-[#BDD8E9]/70 mt-1">
-                      {skill.level}
-                    </p>
+                    <div>
+                      <h3 className="text-lg font-heading font-bold text-[#001D39] dark:text-white group-hover:text-[#0A4174] dark:group-hover:text-[#7BBDE8] transition-colors">
+                        {skill.name}
+                      </h3>
+                      <p className="text-xs font-mono text-[#49769F] dark:text-[#BDD8E9]/70 mt-1">
+                        {skill.level}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </TiltCard>
+                </TiltCard>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* PROJECTS GRID WITH 3D PERSPECTIVE TILT & INTERACTIVE CATEGORY FILTERING */}
+      {/* PROJECTS GRID WITH 3D PERSPECTIVE TILT & BIDIRECTIONAL SCROLL FADE */}
       <section id="projects" className="py-32 px-6 md:px-16 lg:px-28 z-10 relative">
         <div className="max-w-7xl mx-auto">
           
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#BDD8E9]/30 dark:bg-[#0A4174]/50 border border-[#BDD8E9] dark:border-[#4E8EA2]/40 text-[#0A4174] dark:text-[#7BBDE8] text-xs font-mono font-semibold uppercase tracking-wider mb-4">
-                <FolderGit2 className="w-3.5 h-3.5 text-[#0A4174] dark:text-[#7BBDE8]" /> Featured Repositories
+          <ScrollReveal yOffset={35}>
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#BDD8E9]/30 dark:bg-[#0A4174]/50 border border-[#BDD8E9] dark:border-[#4E8EA2]/40 text-[#0A4174] dark:text-[#7BBDE8] text-xs font-mono font-semibold uppercase tracking-wider mb-4">
+                  <FolderGit2 className="w-3.5 h-3.5 text-[#0A4174] dark:text-[#7BBDE8]" /> Featured Repositories
+                </div>
+                <h2 className="text-5xl sm:text-7xl font-heading font-black italic tracking-tight uppercase text-[#001D39] dark:text-white">
+                  Real-World <span className="bg-gradient-to-r from-[#0A4174] to-[#4E8EA2] dark:from-[#7BBDE8] dark:to-[#BDD8E9] bg-clip-text text-transparent">Deployments</span>
+                </h2>
+                <p className="text-[#49769F] dark:text-[#6EA2B3] text-sm sm:text-base mt-2 font-mono">
+                  / source: github.com/Strangemortal
+                </p>
               </div>
-              <h2 className="text-5xl sm:text-7xl font-heading font-black italic tracking-tight uppercase text-[#001D39] dark:text-white">
-                Real-World <span className="bg-gradient-to-r from-[#0A4174] to-[#4E8EA2] dark:from-[#7BBDE8] dark:to-[#BDD8E9] bg-clip-text text-transparent">Deployments</span>
-              </h2>
-              <p className="text-[#49769F] dark:text-[#6EA2B3] text-sm sm:text-base mt-2 font-mono">
-                / source: github.com/Strangemortal
-              </p>
-            </div>
 
-            {/* Filter Tabs with animated pill */}
-            <div className="flex flex-wrap gap-2 p-1.5 rounded-2xl bg-white/90 dark:bg-[#001427]/80 border border-[#BDD8E9] dark:border-[#49769F]/40 backdrop-blur-md shadow-sm dark:shadow-md">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`relative px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider transition-all ${
-                    selectedCategory === cat
-                      ? 'text-white dark:text-[#001D39] font-bold'
-                      : 'text-[#49769F] dark:text-[#BDD8E9]/75 hover:text-[#001D39] dark:hover:text-white'
-                  }`}
-                >
-                  {selectedCategory === cat && (
-                    <motion.div
-                      layoutId="activeFilterTab"
-                      className="absolute inset-0 bg-[#0A4174] dark:bg-[#7BBDE8] rounded-xl shadow-sm dark:shadow-[0_0_15px_rgba(123,189,232,0.4)]"
-                      transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">{cat}</span>
-                </button>
-              ))}
+              {/* Filter Tabs with animated pill */}
+              <div className="flex flex-wrap gap-2 p-1.5 rounded-2xl bg-white/90 dark:bg-[#001427]/80 border border-[#BDD8E9] dark:border-[#49769F]/40 backdrop-blur-md shadow-sm dark:shadow-md">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`relative px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider transition-all ${
+                      selectedCategory === cat
+                        ? 'text-white dark:text-[#001D39] font-bold'
+                        : 'text-[#49769F] dark:text-[#BDD8E9]/75 hover:text-[#001D39] dark:hover:text-white'
+                    }`}
+                  >
+                    {selectedCategory === cat && (
+                      <motion.div
+                        layoutId="activeFilterTab"
+                        className="absolute inset-0 bg-[#0A4174] dark:bg-[#7BBDE8] rounded-xl shadow-sm dark:shadow-[0_0_15px_rgba(123,189,232,0.4)]"
+                        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10">{cat}</span>
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Grid of 3D Perspective Tilt Cards */}
           <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence>
               {filteredProjects.map((project, index) => (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.92 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.92 }}
-                  transition={{ duration: 0.35, delay: index * 0.05 }}
+                <ScrollReveal
                   key={project.title}
+                  delay={(index % 3) * 0.1}
+                  yOffset={45}
+                  amount={0.15}
                   className="h-full"
                 >
                   <TiltCard
@@ -592,24 +611,26 @@ export default function App() {
                       </div>
                     </div>
                   </TiltCard>
-                </motion.div>
+                </ScrollReveal>
               ))}
             </AnimatePresence>
           </motion.div>
         </div>
       </section>
 
-      {/* ACHIEVEMENTS & RESEARCH SECTION */}
+      {/* ACHIEVEMENTS & RESEARCH SECTION WITH BIDIRECTIONAL SCROLL FADE */}
       <section id="achievements" className="py-28 px-6 md:px-16 lg:px-28 z-10 relative bg-white/40 dark:bg-[#001427]/60 border-t border-[#BDD8E9] dark:border-[#49769F]/30">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#BDD8E9]/30 dark:bg-[#0A4174]/50 border border-[#BDD8E9] dark:border-[#4E8EA2]/40 text-[#0A4174] dark:text-[#7BBDE8] text-xs font-mono font-semibold uppercase tracking-wider mb-4">
-              <Sparkles className="w-3.5 h-3.5 text-[#0A4174] dark:text-[#7BBDE8]" /> Recognitions & Publications
+          <ScrollReveal yOffset={35}>
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#BDD8E9]/30 dark:bg-[#0A4174]/50 border border-[#BDD8E9] dark:border-[#4E8EA2]/40 text-[#0A4174] dark:text-[#7BBDE8] text-xs font-mono font-semibold uppercase tracking-wider mb-4">
+                <Sparkles className="w-3.5 h-3.5 text-[#0A4174] dark:text-[#7BBDE8]" /> Recognitions & Publications
+              </div>
+              <h2 className="text-4xl sm:text-6xl font-heading font-black tracking-tight text-[#001D39] dark:text-white">
+                Milestones & <span className="bg-gradient-to-r from-[#0A4174] via-[#4E8EA2] to-[#7BBDE8] dark:from-[#7BBDE8] dark:via-[#BDD8E9] dark:to-white bg-clip-text text-transparent">Honors</span>
+              </h2>
             </div>
-            <h2 className="text-4xl sm:text-6xl font-heading font-black tracking-tight text-[#001D39] dark:text-white">
-              Milestones & <span className="bg-gradient-to-r from-[#0A4174] via-[#4E8EA2] to-[#7BBDE8] dark:from-[#7BBDE8] dark:via-[#BDD8E9] dark:to-white bg-clip-text text-transparent">Honors</span>
-            </h2>
-          </div>
+          </ScrollReveal>
           
           <div className="grid gap-5">
             {[
@@ -632,59 +653,56 @@ export default function App() {
                 tag: 'Peer Reviewed'
               }
             ].map((exp, index) => (
-              <motion.div
+              <ScrollReveal
                 key={exp.title}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.12 }}
-                whileHover={{ scale: 1.01 }}
-                className="group relative flex flex-col md:flex-row items-start md:items-center justify-between gap-6 bg-white dark:bg-[#001D39]/85 border border-[#BDD8E9] dark:border-[#49769F]/35 rounded-[28px] p-8 sm:p-10 shadow-sm dark:shadow-md hover:border-[#0A4174] dark:hover:border-[#7BBDE8]/60 hover:shadow-[0_15px_35px_rgba(10,65,116,0.12)] dark:hover:shadow-[0_15px_35px_rgba(10,65,116,0.35)] transition-all"
+                delay={index * 0.12}
+                yOffset={40}
+                amount={0.15}
               >
-                <div className="flex items-start md:items-center gap-6">
-                  <div className="text-[#0A4174] dark:text-[#7BBDE8] font-heading font-black text-4xl opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all font-mono">
-                    0{index + 1}
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-3 mb-1">
-                      <h3 className="text-2xl font-heading font-black text-[#001D39] dark:text-white group-hover:text-[#0A4174] dark:group-hover:text-[#7BBDE8] transition-colors">
-                        {exp.title}
-                      </h3>
-                      <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-[#BDD8E9]/30 dark:bg-[#0A4174]/70 border border-[#BDD8E9] dark:border-[#4E8EA2]/40 text-[#0A4174] dark:text-[#7BBDE8] uppercase font-semibold">
-                        {exp.tag}
-                      </span>
+                <motion.div
+                  whileHover={{ scale: 1.01 }}
+                  className="group relative flex flex-col md:flex-row items-start md:items-center justify-between gap-6 bg-white dark:bg-[#001D39]/85 border border-[#BDD8E9] dark:border-[#49769F]/35 rounded-[28px] p-8 sm:p-10 shadow-sm dark:shadow-md hover:border-[#0A4174] dark:hover:border-[#7BBDE8]/60 hover:shadow-[0_15px_35px_rgba(10,65,116,0.12)] dark:hover:shadow-[0_15px_35px_rgba(10,65,116,0.35)] transition-all"
+                >
+                  <div className="flex items-start md:items-center gap-6">
+                    <div className="text-[#0A4174] dark:text-[#7BBDE8] font-heading font-black text-4xl opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all font-mono">
+                      0{index + 1}
                     </div>
-                    <div className="text-[#4E8EA2] dark:text-[#6EA2B3] text-xs mb-2 tracking-[0.2em] uppercase font-mono font-bold">
-                      {exp.place}
+                    <div>
+                      <div className="flex items-center gap-3 mb-1">
+                        <h3 className="text-2xl font-heading font-black text-[#001D39] dark:text-white group-hover:text-[#0A4174] dark:group-hover:text-[#7BBDE8] transition-colors">
+                          {exp.title}
+                        </h3>
+                        <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-[#BDD8E9]/30 dark:bg-[#0A4174]/70 border border-[#BDD8E9] dark:border-[#4E8EA2]/40 text-[#0A4174] dark:text-[#7BBDE8] uppercase font-semibold">
+                          {exp.tag}
+                        </span>
+                      </div>
+                      <div className="text-[#4E8EA2] dark:text-[#6EA2B3] text-xs mb-2 tracking-[0.2em] uppercase font-mono font-bold">
+                        {exp.place}
+                      </div>
+                      <p className="text-[#385c7d] dark:text-[#BDD8E9]/85 leading-relaxed font-light text-base max-w-3xl">
+                        {exp.desc}
+                      </p>
                     </div>
-                    <p className="text-[#385c7d] dark:text-[#BDD8E9]/85 leading-relaxed font-light text-base max-w-3xl">
-                      {exp.desc}
-                    </p>
                   </div>
-                </div>
 
-                <div className="p-3 rounded-full bg-[#F0F7FC] dark:bg-[#0A4174]/40 border border-[#BDD8E9] dark:border-[#49769F]/40 text-[#49769F] dark:text-[#6EA2B3] group-hover:text-[#0A4174] dark:group-hover:text-[#7BBDE8] group-hover:border-[#0A4174] dark:group-hover:border-[#7BBDE8] transition-colors self-end md:self-center">
-                  <CheckCircle2 className="w-5 h-5" />
-                </div>
-              </motion.div>
+                  <div className="p-3 rounded-full bg-[#F0F7FC] dark:bg-[#0A4174]/40 border border-[#BDD8E9] dark:border-[#49769F]/40 text-[#49769F] dark:text-[#6EA2B3] group-hover:text-[#0A4174] dark:group-hover:text-[#7BBDE8] group-hover:border-[#0A4174] dark:group-hover:border-[#7BBDE8] transition-colors self-end md:self-center">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </div>
+                </motion.div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CONTACT SECTION WITH MAGNETIC ACTION */}
+      {/* CONTACT SECTION WITH MAGNETIC ACTION & SCROLL FADE */}
       <section id="contact" className="py-36 px-6 relative overflow-hidden z-10 text-center bg-gradient-to-b from-[#F0F7FC] via-white to-[#E1EFF8] dark:from-[#001D39] dark:via-[#001427] dark:to-[#001121]">
         
         {/* Soft center radiant aura */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-[#BDD8E9]/40 dark:bg-[#0A4174]/35 blur-[160px] rounded-full pointer-events-none" />
 
         <div className="max-w-5xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.94 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
+          <ScrollReveal yOffset={40} scale={0.93}>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#BDD8E9]/40 dark:bg-[#0A4174]/60 border border-[#BDD8E9] dark:border-[#4E8EA2]/40 text-[#0A4174] dark:text-[#7BBDE8] text-xs font-mono font-bold tracking-wider uppercase mb-8 shadow-sm">
               Initiate Collaboration
             </div>
@@ -738,7 +756,7 @@ export default function App() {
                 </MagneticButton>
               </div>
             </div>
-          </motion.div>
+          </ScrollReveal>
         </div>
       </section>
 
