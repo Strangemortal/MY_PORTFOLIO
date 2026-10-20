@@ -35,29 +35,16 @@ export default function ParticleCanvas() {
         this.vx = (Math.random() - 0.5) * 0.55;
         this.vy = (Math.random() - 0.5) * 0.55;
         this.radius = Math.random() * 2.2 + 1.2;
-        
-        // Exact theme color palette: Sky Blue, Powder Blue, Air Force Blue, Cadet Blue, Steel Blue
-        const colors = [
-          'rgba(123, 189, 232, ',  // Sky Blue (#7BBDE8)
-          'rgba(189, 216, 233, ',  // Powder Blue (#BDD8E9)
-          'rgba(110, 162, 179, ',  // Air Force Blue (#6EA2B3)
-          'rgba(78, 142, 162, ',   // Cadet Blue (#4E8EA2)
-          'rgba(73, 118, 159, '    // Steel Blue (#49769F)
-        ];
-        this.colorPrefix = colors[Math.floor(Math.random() * colors.length)];
-        this.alpha = Math.random() * 0.5 + 0.35;
+        this.alpha = Math.random() * 0.45 + 0.35;
       }
 
       update() {
-        // Move with velocity
         this.x += this.vx;
         this.y += this.vy;
 
-        // Bounce off canvas boundaries
         if (this.x < 0 || this.x > width) this.vx *= -1;
         if (this.y < 0 || this.y > height) this.vy *= -1;
 
-        // Interactive mouse physics repulsion
         if (mouse.x !== null && mouse.y !== null) {
           const dx = mouse.x - this.x;
           const dy = mouse.y - this.y;
@@ -72,12 +59,17 @@ export default function ParticleCanvas() {
         }
       }
 
-      draw() {
+      draw(isDark) {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `${this.colorPrefix}${this.alpha})`;
-        ctx.shadowBlur = 6;
-        ctx.shadowColor = `${this.colorPrefix}0.4)`;
+        
+        const colorPrefix = isDark
+          ? 'rgba(123, 189, 232, '  // Sky Blue
+          : 'rgba(10, 65, 116, ';   // Deep Sapphire
+
+        ctx.fillStyle = `${colorPrefix}${this.alpha})`;
+        ctx.shadowBlur = isDark ? 6 : 2;
+        ctx.shadowColor = `${colorPrefix}0.4)`;
         ctx.fill();
         ctx.shadowBlur = 0;
       }
@@ -89,7 +81,8 @@ export default function ParticleCanvas() {
     }
 
     // Draw connecting lines between nearby particles
-    const drawConnections = () => {
+    const drawConnections = (isDark) => {
+      const lineBase = isDark ? '110, 162, 179' : '73, 118, 159';
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
@@ -97,11 +90,11 @@ export default function ParticleCanvas() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < connectionDistance) {
-            const alpha = (1 - dist / connectionDistance) * 0.18;
+            const alpha = (1 - dist / connectionDistance) * (isDark ? 0.18 : 0.14);
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(110, 162, 179, ${alpha})`;
+            ctx.strokeStyle = `rgba(${lineBase}, ${alpha})`;
             ctx.lineWidth = 0.85;
             ctx.stroke();
           }
@@ -113,7 +106,8 @@ export default function ParticleCanvas() {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Smooth mouse interpolation
+      const isDark = document.documentElement.classList.contains('dark');
+
       if (mouse.targetX !== null) {
         if (mouse.x === null) {
           mouse.x = mouse.targetX;
@@ -124,13 +118,11 @@ export default function ParticleCanvas() {
         }
       }
 
-      // Draw faint connections
-      drawConnections();
+      drawConnections(isDark);
 
-      // Update & draw particles
       for (let i = 0; i < particles.length; i++) {
         particles[i].update();
-        particles[i].draw();
+        particles[i].draw(isDark);
       }
 
       animationFrameId = requestAnimationFrame(render);
@@ -138,7 +130,6 @@ export default function ParticleCanvas() {
 
     render();
 
-    // Event Listeners
     const handleMouseMove = (e) => {
       mouse.targetX = e.clientX;
       mouse.targetY = e.clientY;

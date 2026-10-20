@@ -5,6 +5,7 @@ export default function MouseFollower() {
   const [isHovered, setIsHovered] = useState(false);
   const [hoverType, setHoverType] = useState('default');
   const [isVisible, setIsVisible] = useState(false);
+  const [isDark, setIsDark] = useState(true);
 
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
@@ -20,12 +21,19 @@ export default function MouseFollower() {
   const auraY = useSpring(mouseY, auraConfig);
 
   useEffect(() => {
+    const updateThemeState = () => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    };
+    updateThemeState();
+
+    const observer = new MutationObserver(updateThemeState);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
     const handleMouseMove = (e) => {
       setIsVisible(true);
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
 
-      // Check if hovering over interactive elements
       const target = e.target;
       if (
         target.closest('a') ||
@@ -56,6 +64,7 @@ export default function MouseFollower() {
     document.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
+      observer.disconnect();
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
@@ -71,9 +80,13 @@ export default function MouseFollower() {
         style={{
           x: auraX,
           y: auraY,
-          background: isHovered
-            ? 'radial-gradient(circle, rgba(10, 65, 116, 0.4) 0%, rgba(123, 189, 232, 0.15) 40%, transparent 70%)'
-            : 'radial-gradient(circle, rgba(10, 65, 116, 0.25) 0%, rgba(78, 142, 162, 0.08) 45%, transparent 70%)',
+          background: isDark
+            ? isHovered
+              ? 'radial-gradient(circle, rgba(10, 65, 116, 0.4) 0%, rgba(123, 189, 232, 0.15) 40%, transparent 70%)'
+              : 'radial-gradient(circle, rgba(10, 65, 116, 0.25) 0%, rgba(78, 142, 162, 0.08) 45%, transparent 70%)'
+            : isHovered
+              ? 'radial-gradient(circle, rgba(189, 216, 233, 0.6) 0%, rgba(123, 189, 232, 0.2) 40%, transparent 70%)'
+              : 'radial-gradient(circle, rgba(189, 216, 233, 0.35) 0%, rgba(78, 142, 162, 0.1) 45%, transparent 70%)',
         }}
       />
 
@@ -85,14 +98,20 @@ export default function MouseFollower() {
           y: smoothY,
           width: isHovered ? (hoverType === 'card' ? 56 : 48) : 26,
           height: isHovered ? (hoverType === 'card' ? 56 : 48) : 26,
-          borderColor: isHovered ? 'rgba(123, 189, 232, 0.7)' : 'rgba(78, 142, 162, 0.4)',
-          backgroundColor: isHovered ? 'rgba(10, 65, 116, 0.3)' : 'transparent',
-          boxShadow: isHovered ? '0 0 15px rgba(123, 189, 232, 0.25)' : 'none',
+          borderColor: isDark
+            ? isHovered ? 'rgba(123, 189, 232, 0.7)' : 'rgba(78, 142, 162, 0.4)'
+            : isHovered ? 'rgba(10, 65, 116, 0.7)' : 'rgba(73, 118, 159, 0.4)',
+          backgroundColor: isDark
+            ? isHovered ? 'rgba(10, 65, 116, 0.3)' : 'transparent'
+            : isHovered ? 'rgba(189, 216, 233, 0.3)' : 'transparent',
+          boxShadow: isHovered
+            ? isDark ? '0 0 15px rgba(123, 189, 232, 0.25)' : '0 0 15px rgba(10, 65, 116, 0.15)'
+            : 'none',
         }}
         transition={{ type: 'spring', stiffness: 350, damping: 25 }}
       >
         {isHovered && hoverType === 'card' && (
-          <span className="text-[8px] font-mono font-bold tracking-widest text-[#7BBDE8] uppercase select-none">
+          <span className={`text-[8px] font-mono font-bold tracking-widest uppercase select-none ${isDark ? 'text-[#7BBDE8]' : 'text-[#0A4174]'}`}>
             VIEW
           </span>
         )}
@@ -100,7 +119,11 @@ export default function MouseFollower() {
 
       {/* 3. Center Precision Pointer Dot */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-50 w-2 h-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#7BBDE8] shadow-[0_0_8px_#7BBDE8]"
+        className={`fixed top-0 left-0 pointer-events-none z-50 w-2 h-2 -translate-x-1/2 -translate-y-1/2 rounded-full ${
+          isDark
+            ? 'bg-[#7BBDE8] shadow-[0_0_8px_#7BBDE8]'
+            : 'bg-[#0A4174] shadow-[0_0_8px_#0A4174]'
+        }`}
         style={{
           x: mouseX,
           y: mouseY,

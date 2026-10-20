@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light dark;
 }
 
 html {
@@ -13,33 +13,48 @@ html {
 body {
   margin: 0;
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  background-color: #001D39;
-  color: #BDD8E9;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Midnight Navy refined scrollbar */
+/* Light & Dark Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
-::-webkit-scrollbar-track {
+
+html.dark ::-webkit-scrollbar-track {
   background: #001427;
 }
-::-webkit-scrollbar-thumb {
+html.dark ::-webkit-scrollbar-thumb {
   background: #0A4174;
   border-radius: 9999px;
   border: 2px solid #001427;
 }
-::-webkit-scrollbar-thumb:hover {
+html.dark ::-webkit-scrollbar-thumb:hover {
   background: #49769F;
 }
 
+html.light ::-webkit-scrollbar-track {
+  background: #F0F7FC;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #BDD8E9;
+  border-radius: 9999px;
+  border: 2px solid #F0F7FC;
+}
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #6EA2B3;
+}
+
 /* Selection highlight */
-::selection {
+html.dark ::selection {
   background-color: #0A4174;
   color: #BDD8E9;
+}
+html.light ::selection {
+  background-color: #BDD8E9;
+  color: #001D39;
 }
 
 /* 3D and perspective utilities */
@@ -55,8 +70,8 @@ body {
   backface-visibility: hidden;
 }
 
-/* Custom Sapphire & Midnight Glassmorphism */
-.glass-panel-navy {
+/* Adaptive Sapphire & Midnight Glassmorphism */
+html.dark .glass-panel {
   background: linear-gradient(135deg, rgba(10, 65, 116, 0.3) 0%, rgba(0, 29, 57, 0.7) 100%);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -64,7 +79,20 @@ body {
   box-shadow: 0 10px 30px -5px rgba(0, 15, 30, 0.6);
 }
 
-.glass-panel-navy:hover {
+html.dark .glass-panel:hover {
   border-color: rgba(123, 189, 232, 0.4);
   box-shadow: 0 20px 45px -10px rgba(10, 65, 116, 0.5), 0 0 20px rgba(123, 189, 232, 0.1);
+}
+
+html.light .glass-panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 247, 252, 0.85) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(189, 216, 233, 0.8);
+  box-shadow: 0 10px 30px -5px rgba(10, 65, 116, 0.05);
+}
+
+html.light .glass-panel:hover {
+  border-color: rgba(78, 142, 162, 0.5);
+  box-shadow: 0 20px 45px -10px rgba(10, 65, 116, 0.12), 0 0 20px rgba(123, 189, 232, 0.15);
 }

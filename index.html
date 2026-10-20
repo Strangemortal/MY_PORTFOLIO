@@ -4,12 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bharat Bhushan | Systems, AI/ML & DevOps Engineer</title>
+    <!-- Adaptive SVG Favicon -->
+    <link rel="icon" id="dynamic-favicon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Inline script to initialize system/saved theme before paint -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('theme') || 'system';
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var isDark = saved === 'dark' || (saved === 'system' && prefersDark);
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+          }
+          var favicon = document.getElementById('dynamic-favicon');
+          if (favicon) {
+            favicon.href = isDark ? '/favicon-dark.svg' : '/favicon-light.svg';
+          }
+        } catch (e) {}
+      })();
+    </script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-[#001D39] text-[#BDD8E9]">
+  <body class="bg-[#F0F7FC] dark:bg-[#001D39] text-[#001D39] dark:text-[#BDD8E9] transition-colors duration-300">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

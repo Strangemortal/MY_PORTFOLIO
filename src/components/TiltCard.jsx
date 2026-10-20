@@ -4,7 +4,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 export default function TiltCard({
   children,
   className = '',
-  spotlightColor = 'rgba(123, 189, 232, 0.15)',
+  spotlightColor,
 }) {
   const cardRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -69,13 +69,15 @@ export default function TiltCard({
         className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-300"
         style={{
           opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(380px circle at ${spotlightPos.x}px ${spotlightPos.y}px, ${spotlightColor}, transparent 75%)`,
+          background: `radial-gradient(380px circle at ${spotlightPos.x}px ${spotlightPos.y}px, ${
+            spotlightColor || 'rgba(123, 189, 232, 0.14)'
+          }, transparent 75%)`,
         }}
       />
 
       {/* Dynamic border reflection highlight */}
       <div
-        className="pointer-events-none absolute inset-0 z-20 rounded-[28px] border border-[#7BBDE8]/30 transition-opacity duration-300"
+        className="pointer-events-none absolute inset-0 z-20 rounded-[28px] border border-[#0A4174]/20 dark:border-[#7BBDE8]/30 transition-opacity duration-300"
         style={{
           opacity: isHovered ? 1 : 0,
         }}

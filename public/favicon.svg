@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <!-- Dark Mode Gradients -->
+    <linearGradient id="darkBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00284d" />
+      <stop offset="100%" stop-color="#001427" />
+    </linearGradient>
+    <linearGradient id="darkBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7BBDE8" />
+      <stop offset="50%" stop-color="#49769F" />
+      <stop offset="100%" stop-color="#0A4174" />
+    </linearGradient>
+    <linearGradient id="darkGlyph" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#7BBDE8" />
+      <stop offset="100%" stop-color="#BDD8E9" />
+    </linearGradient>
+
+    <!-- Light Mode Gradients -->
+    <linearGradient id="lightBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#E1EFF8" />
+    </linearGradient>
+    <linearGradient id="lightBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A4174" />
+      <stop offset="50%" stop-color="#4E8EA2" />
+      <stop offset="100%" stop-color="#BDD8E9" />
+    </linearGradient>
+    <linearGradient id="lightGlyph" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#001D39" />
+      <stop offset="70%" stop-color="#0A4174" />
+      <stop offset="100%" stop-color="#4E8EA2" />
+    </linearGradient>
+
+    <style>
+      :root {
+        --bg: url(#darkBg);
+        --border: url(#darkBorder);
+        --glyph: url(#darkGlyph);
+        --accent: #7BBDE8;
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: url(#lightBg);
+          --border: url(#lightBorder);
+          --glyph: url(#lightGlyph);
+          --accent: #0A4174;
+        }
+      }
+    </style>
+  </defs>
+
+  <!-- Squircle Base -->
+  <rect x="3" y="3" width="58" height="58" rx="16" ry="16" fill="var(--bg)" stroke="var(--border)" stroke-width="2.5" />
+  
+  <!-- Stylized Geometric BB Emblem -->
+  <!-- Left B Spine & Loops -->
+  <path d="M18 19 H28 C32.5 19 35 21.2 35 24 C35 26.5 33 28 30 28.6 C34 29.2 36.5 31.2 36.5 34.5 C36.5 38 33 41 28 41 H18 Z M24 23.5 V27.5 H27 C28.8 27.5 30 26.8 30 25.5 C30 24.2 28.8 23.5 27 23.5 Z M24 32.5 V36.5 H28 C30 36.5 31.5 35.7 31.5 34.5 C31.5 33.3 30 32.5 28 32.5 Z" fill="var(--glyph)" />
+
+  <!-- Right Geometric Angular Cut / Second B Interlock -->
+  <path d="M37 20 L45 28 L37 36" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="45" cy="38" r="2.2" fill="var(--accent)" />
+</svg>
