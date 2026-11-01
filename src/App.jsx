@@ -61,8 +61,8 @@ const experiences = [
     location: 'Bengaluru, India',
     period: 'Aug 2026 – Oct 2026',
     type: 'Internship',
-    link: 'https://saigroup.ai/',
-    linkLabel: 'saigroup.ai',
+    link: 'https://saivision.in/#',
+    linkLabel: 'saivision.in',
     description: [
       'Contributed to AI-powered surveillance solutions, focusing on computer vision, face detection, and face recognition workflows.',
       'Explored on-device AI model integration and lightweight face recognition architectures for resource-constrained environments.',
@@ -114,8 +114,8 @@ const experiences = [
     location: 'Bengaluru, India',
     period: 'Nov 2024 – Present',
     type: 'College Community',
-    link: 'https://dsatm.edu.in/',
-    linkLabel: 'dsatm.edu.in',
+    link: 'https://www.linkedin.com/company/maker-space-dsatm-college/home/',
+    linkLabel: 'Maker Space LinkedIn',
     description: [
       'Contributed to collaborative technical projects and hackathon-related activities within the college community.',
       'Prototyped hardware-software embedded systems, sensor telemetry architectures, and rapid engineering solutions.'
@@ -977,7 +977,7 @@ export default function App() {
                 place: 'DSATM Technical Community', 
                 desc: 'Participated in and contributed to organizing college technical events, hackathon activities, and open-source workshops for engineering students.',
                 tag: 'Organizer & Contributor',
-                link: 'https://dsatm.edu.in/'
+                link: 'https://www.linkedin.com/company/maker-space-dsatm-college/home/'
               }
             ].map((item, index) => (
               <ScrollReveal
