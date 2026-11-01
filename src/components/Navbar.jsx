@@ -18,6 +18,7 @@ export default function Navbar() {
 
   const navLinks = [
     { label: 'Mission', href: '#mission' },
+    { label: 'Experience', href: '#experience' },
     { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
     { label: 'Achievements', href: '#achievements' },

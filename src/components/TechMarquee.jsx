@@ -15,25 +15,25 @@ import {
 } from 'lucide-react';
 
 const row1 = [
-  { name: 'Python 3.12', icon: <Code2 className="w-4 h-4 text-[#0A4174] dark:text-[#7BBDE8]" /> },
-  { name: 'Django REST', icon: <Database className="w-4 h-4 text-[#4E8EA2] dark:text-[#6EA2B3]" /> },
+  { name: 'Python', icon: <Code2 className="w-4 h-4 text-[#0A4174] dark:text-[#7BBDE8]" /> },
+  { name: 'OpenCV Computer Vision', icon: <Sparkles className="w-4 h-4 text-[#0A4174] dark:text-[#BDD8E9]" /> },
+  { name: 'LangChain & LangGraph', icon: <Zap className="w-4 h-4 text-[#0A4174] dark:text-[#7BBDE8]" /> },
+  { name: 'FastAPI & REST APIs', icon: <Workflow className="w-4 h-4 text-[#49769F] dark:text-[#6EA2B3]" /> },
+  { name: 'Django Systems', icon: <Database className="w-4 h-4 text-[#4E8EA2] dark:text-[#6EA2B3]" /> },
   { name: 'Graph ML & NetworkX', icon: <Cpu className="w-4 h-4 text-[#0A4174] dark:text-[#BDD8E9]" /> },
-  { name: 'Docker Containers', icon: <Layers className="w-4 h-4 text-[#49769F] dark:text-[#7BBDE8]" /> },
-  { name: 'Cybersecurity & Stego', icon: <Shield className="w-4 h-4 text-[#4E8EA2]" /> },
-  { name: 'React & Vite', icon: <Boxes className="w-4 h-4 text-[#0A4174] dark:text-[#7BBDE8]" /> },
-  { name: 'CI/CD Pipelines', icon: <Workflow className="w-4 h-4 text-[#49769F] dark:text-[#6EA2B3]" /> },
-  { name: 'OpenCV Vision', icon: <Sparkles className="w-4 h-4 text-[#0A4174] dark:text-[#BDD8E9]" /> },
+  { name: 'Docker & DevOps', icon: <Layers className="w-4 h-4 text-[#49769F] dark:text-[#7BBDE8]" /> },
+  { name: 'React.js Frontend', icon: <Boxes className="w-4 h-4 text-[#0A4174] dark:text-[#7BBDE8]" /> },
 ];
 
 const row2 = [
-  { name: 'Microservices Architecture', icon: <Zap className="w-4 h-4 text-[#0A4174] dark:text-[#7BBDE8]" /> },
-  { name: 'Git & Version Control', icon: <GitBranch className="w-4 h-4 text-[#49769F] dark:text-[#6EA2B3]" /> },
-  { name: 'Shell / Bash Scripting', icon: <Terminal className="w-4 h-4 text-[#0A4174] dark:text-[#BDD8E9]" /> },
-  { name: 'AWS Cloud & Deployments', icon: <Globe className="w-4 h-4 text-[#49769F] dark:text-[#7BBDE8]" /> },
-  { name: 'High-Throughput Systems', icon: <Cpu className="w-4 h-4 text-[#4E8EA2]" /> },
-  { name: 'End-to-End Encryption', icon: <Shield className="w-4 h-4 text-[#0A4174] dark:text-[#BDD8E9]" /> },
-  { name: 'Tailwind & Modern CSS', icon: <Layers className="w-4 h-4 text-[#4E8EA2] dark:text-[#6EA2B3]" /> },
-  { name: 'Conference Author (IEEE)', icon: <Sparkles className="w-4 h-4 text-[#0A4174] dark:text-[#7BBDE8]" /> },
+  { name: 'PostgreSQL & SQL', icon: <Database className="w-4 h-4 text-[#4E8EA2] dark:text-[#6EA2B3]" /> },
+  { name: 'Scikit-learn & NumPy', icon: <Cpu className="w-4 h-4 text-[#4E8EA2]" /> },
+  { name: 'GitHub Actions & CI/CD', icon: <GitBranch className="w-4 h-4 text-[#49769F] dark:text-[#6EA2B3]" /> },
+  { name: 'PyTest Automated Testing', icon: <Terminal className="w-4 h-4 text-[#0A4174] dark:text-[#BDD8E9]" /> },
+  { name: 'Linux & Shell Scripting', icon: <Terminal className="w-4 h-4 text-[#0A4174] dark:text-[#BDD8E9]" /> },
+  { name: 'On-Device AI & Robotics', icon: <Zap className="w-4 h-4 text-[#0A4174] dark:text-[#7BBDE8]" /> },
+  { name: 'Cybersecurity & Stego', icon: <Shield className="w-4 h-4 text-[#0A4174] dark:text-[#BDD8E9]" /> },
+  { name: 'IEEE Conference Author', icon: <Sparkles className="w-4 h-4 text-[#0A4174] dark:text-[#7BBDE8]" /> },
 ];
 
 export default function TechMarquee() {

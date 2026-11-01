@@ -38,9 +38,9 @@ export default function LiveTerminal() {
         <div className="p-3.5 rounded-xl bg-[#F0F7FC] dark:bg-[#0A4174]/30 border border-[#BDD8E9] dark:border-[#4E8EA2]/30 space-y-2">
           <div className="flex justify-between items-center text-[#001D39] dark:text-[#BDD8E9]">
             <span className="flex items-center gap-1.5 font-medium text-[#001D39] dark:text-white">
-              <Cpu className="w-3.5 h-3.5 text-[#0A4174] dark:text-[#7BBDE8]" /> Neural Engine / ML Pipeline
+              <Cpu className="w-3.5 h-3.5 text-[#0A4174] dark:text-[#7BBDE8]" /> Vision & Face Recognition Pipeline
             </span>
-            <span className="text-[#0A4174] dark:text-[#7BBDE8] font-bold">ONLINE [99.8%]</span>
+            <span className="text-[#0A4174] dark:text-[#7BBDE8] font-bold">ACTIVE [3.42ms]</span>
           </div>
           <div className="w-full bg-[#BDD8E9]/40 dark:bg-[#001D39] rounded-full h-1.5 overflow-hidden border border-[#BDD8E9] dark:border-[#0A4174]">
             <motion.div
@@ -49,6 +49,10 @@ export default function LiveTerminal() {
               animate={{ width: ['40%', '88%', '74%', '96%'] }}
               transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
             />
+          </div>
+          <div className="text-[11px] text-[#49769F] dark:text-[#BDD8E9]/70 flex justify-between">
+            <span>On-device inference: lightweight architecture</span>
+            <span className="text-[#0A4174] dark:text-[#7BBDE8]">285 req/s</span>
           </div>
         </div>
 
